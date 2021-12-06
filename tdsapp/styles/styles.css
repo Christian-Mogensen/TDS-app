@@ -1,0 +1,9 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+.toggle {
+    background: red;
+    width: 100px;
+    height: 50px;
+}
