@@ -27,7 +27,7 @@ const Header = () => {
   };
   return (
     <motion.header
-      className="border-b  sticky top-0 z-50 bg-gray-200 dark:border-gray-700 dark:bg-gray-900 dark:bg-[var(--gradient-bg-right)] font-secondary font-bold shadow-md shadow-white"
+      className="border-b overflow-hidden  sticky top-0 z-50 bg-gray-200 dark:border-gray-700 dark:bg-gray-900 dark:bg-[var(--gradient-bg-right)] font-secondary font-bold shadow-md shadow-white"
       initial={{ opacity: 0, y: -60 }}
       animate={{ opacity: 1, y: 0 }}
     >
