@@ -1,4 +1,5 @@
 import { motion } from "framer-motion";
+import UseSwitchesCustom from "./CustomSwitch";
 
 const Header = () => {
   const textparent = {
@@ -24,11 +25,12 @@ const Header = () => {
   };
   return (
     <motion.header
-      className=""
+      className="border-b border-gray-700 sticky top-0 z-50 bg-gray-900 bg-[var(--gradient-bg-right)]"
       initial={{ opacity: 0, y: -60 }}
       animate={{ opacity: 1, y: 0 }}
     >
-      <h1 className="py-3 border-b border-gray-700 capitalize text-3xl dark:text-white dark:border-gray-50">
+      <div className="flex justify-between items-center">
+      <h1 className="py-3  capitalize text-3xl dark:text-white dark:border-gray-50">
         <motion.span
           variants={textparent}
           transition={{ delay: 1 }}
@@ -40,7 +42,8 @@ const Header = () => {
           <motion.span variants={textitem}> stoic</motion.span>
         </motion.span>
       </h1>
-      <input type='checkbox' className='toggle'/>
+      <UseSwitchesCustom />
+      </div>
     </motion.header>
   );
 };

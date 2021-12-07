@@ -1,8 +1,8 @@
 const Footer = () => {
     return (
-        <Footer>
-            <p>lorem ipsum dolor bla bla bla</p>
-        </Footer>
+        <footer className='py-3 text-center dark:text-white border-t border-gray-700'>
+            <p>School project - Roskilde Teknisk Skole - v.1</p>
+        </footer>
     )
 }
 
