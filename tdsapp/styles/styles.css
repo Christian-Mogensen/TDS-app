@@ -1,3 +1,6 @@
+@import url('https://fonts.googleapis.com/css2?family=Merriweather:ital,wght@0,300;0,400;0,700;0,900;1,300;1,400;1,700;1,900&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Roboto+Condensed:ital,wght@0,300;0,400;0,700;1,300;1,400;1,700&display=swap');
+
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
@@ -150,33 +153,16 @@
 .react-calendar--selectRange .react-calendar__tile--hover {
   background-color: #e6e6e6;
 }
-.special-quote {
-  position: relative;
-}
-.special-quote::before,
-.special-quote::after {
-  content: '"';
-  font-family: "Times New Roman", Times, serif;
-  font-style: italic;
-  position: absolute;
-  font-size: 4rem;
-}
+
 .special-quote::before {
-  top: 1rem;
+  top: -1rem;
   left: 0;
 }
 .special-quote::after {
   bottom: 0;
   right: 10px;
 }
-/* .imgContainer {
-      display: grid;
-      grid-template-columns: 1;
-      grid-template-rows: 1;
-  } */
-/* .imgText, .imgItem {
-    grid-area: 1/1/-1/-1;
-  } */
+
 
 .img-styling {
   height: 60vh;
@@ -185,6 +171,6 @@
 
 @layer components {
   .mainstyling {
-    @apply max-w-[375px] min-h-screen flex flex-col justify-between w-full bg-gray-100 px-2 text-gray-700 dark:bg-black dark:text-white;
+    @apply max-w-[414px] min-h-screen flex flex-col justify-between w-full bg-gray-100 text-gray-700 dark:bg-black dark:text-white font-primary ;
   }
 }

@@ -6,8 +6,7 @@ import ImageComponent from "../components/ImageComponent";
 import Quote from "../components/Quote";
 import Synopsis from "../components/Synopsis";
 import MainHeader from "../components/MainHeader";
-
-
+import IconWrapper from "../components/IconWrapper";
 
 export default function Home() {
   const [value, onChange] = useState(new Date());
@@ -54,26 +53,32 @@ export default function Home() {
   };
   const randomnumbergenerator = Math.floor(
     Math.random() * (pageInfo.page.img.url.length - 1)
-  );
-  console.log(randomnumbergenerator);
-  const pageTitle = pageInfo.page.title;
-  const pageDay = `${pageInfo.page.date.day} ${pageInfo.page.date.month}`;
-  const pagePhiloPic = pageInfo.page.img.url[randomnumbergenerator];
-  const pagePhiloSrc = pageInfo.page.img.src;
-  const pageFilosof = pageInfo.page.filosof;
-  const pageQuote = pageInfo.page.quote;
-  const pageRef = pageInfo.page.reference;
-  const pageSynopsis = pageInfo.page.synopsis;
+    );
+    console.log(randomnumbergenerator);
+    const pageTitle = pageInfo.page.title;
+    const pageDay = `${pageInfo.page.date.day} ${pageInfo.page.date.month}`;
+    const pagePhiloPic = pageInfo.page.img.url[randomnumbergenerator];
+    const pagePhiloSrc = pageInfo.page.img.src;
+    const pageFilosof = pageInfo.page.filosof;
+    const pageQuote = pageInfo.page.quote;
+    const pageRef = pageInfo.page.reference;
+    const pageSynopsis = pageInfo.page.synopsis;
+    
 
-  return (
-    <div className="dark">
-      <div className="mainstyling  dark:bg-[var(--gradient-bg-right)] ">
+    return (
+      <div className="dark">
+      <div className="mainstyling  dark:bg-[var(--gradient-bg-right)]">
         <Header />
         <Main>
           <MainHeader title={pageTitle} date={pageDay} />
-          <ImageComponent source={pagePhiloPic} alt={pagePhiloSrc} filosof={pageFilosof}  />
+          <ImageComponent
+            source={pagePhiloPic}
+            alt={pagePhiloSrc}
+            filosof={pageFilosof}
+          />
           <Quote quote={pageQuote} refer={pageRef} />
           <Synopsis para={pageSynopsis} />
+          <IconWrapper />
         </Main>
         <Footer />
       </div>

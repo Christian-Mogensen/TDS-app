@@ -9,7 +9,7 @@ const ImageComponent = ({source, alt, filosof}) => {
           src={source}
           alt={`${alt} image`}
         />
-        <figcaption className="absolute left-5 bottom-5 z-10 imgText">
+        <figcaption className="absolute left-5 bottom-5 z-10 imgText font-secondary text-white">
           {filosof}
         </figcaption>
       </figure>
