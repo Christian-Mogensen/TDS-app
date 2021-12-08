@@ -7,8 +7,17 @@ import Quote from "../components/Quote";
 import Synopsis from "../components/Synopsis";
 import MainHeader from "../components/MainHeader";
 import IconWrapper from "../components/IconWrapper";
+import dataDec from "./api/december.json"
 
 export default function Home({theme}) {
+  const d = new Date();
+  const day = d.getDate()
+  const month = d.getMonth() + 1
+  if(10 < 10){
+    console.log('0');
+  }
+   let dayID = String('0' + day + month)
+  console.log(dataDec[`'${dayID}'`]);
   const pageInfo = {
     page: {
       date: {
@@ -54,14 +63,14 @@ export default function Home({theme}) {
     Math.random() * (pageInfo.page.img.url.length - 1)
   );
 
-  const pageTitle = pageInfo.page.title;
-  const pageDay = `${pageInfo.page.date.day} ${pageInfo.page.date.month}`;
+  const pageTitle = dataDec[`'${dayID}'`].title;
+  const pageDay = `${dataDec[`'${dayID}'`].date.day} ${dataDec[`'${dayID}'`].date.month}`;
   const pagePhiloPic = pageInfo.page.img.url[randomnumbergenerator];
-  const pagePhiloSrc = pageInfo.page.img.src;
-  const pageFilosof = pageInfo.page.filosof;
-  const pageQuote = pageInfo.page.quote;
-  const pageRef = pageInfo.page.reference;
-  const pageSynopsis = pageInfo.page.synopsis;
+  const pagePhiloSrc = dataDec[`'${dayID}'`].img.src;
+  const pageFilosof = dataDec[`'${dayID}'`].filosof;
+  const pageQuote = dataDec[`'${dayID}'`].quote;
+  const pageRef = dataDec[`'${dayID}'`].reference;
+  const pageSynopsis = dataDec[`'${dayID}'`].synopsis;
 
   useEffect(() => {
     if (typeof window !== "undefined") {
