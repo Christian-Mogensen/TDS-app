@@ -1,6 +1,6 @@
 import Header from "../components/Header";
 import Main from "../components/Main";
-import { useState } from "react";
+import { useState, useEffect } from "react";
 import Footer from "../components/Footer";
 import ImageComponent from "../components/ImageComponent";
 import Quote from "../components/Quote";
@@ -8,8 +8,7 @@ import Synopsis from "../components/Synopsis";
 import MainHeader from "../components/MainHeader";
 import IconWrapper from "../components/IconWrapper";
 
-export default function Home() {
-  const [value, onChange] = useState(new Date());
+export default function Home({theme}) {
   const pageInfo = {
     page: {
       date: {
@@ -53,20 +52,29 @@ export default function Home() {
   };
   const randomnumbergenerator = Math.floor(
     Math.random() * (pageInfo.page.img.url.length - 1)
-    );
-    console.log(randomnumbergenerator);
-    const pageTitle = pageInfo.page.title;
-    const pageDay = `${pageInfo.page.date.day} ${pageInfo.page.date.month}`;
-    const pagePhiloPic = pageInfo.page.img.url[randomnumbergenerator];
-    const pagePhiloSrc = pageInfo.page.img.src;
-    const pageFilosof = pageInfo.page.filosof;
-    const pageQuote = pageInfo.page.quote;
-    const pageRef = pageInfo.page.reference;
-    const pageSynopsis = pageInfo.page.synopsis;
-    
+  );
 
-    return (
-      <div className="dark">
+  const pageTitle = pageInfo.page.title;
+  const pageDay = `${pageInfo.page.date.day} ${pageInfo.page.date.month}`;
+  const pagePhiloPic = pageInfo.page.img.url[randomnumbergenerator];
+  const pagePhiloSrc = pageInfo.page.img.src;
+  const pageFilosof = pageInfo.page.filosof;
+  const pageQuote = pageInfo.page.quote;
+  const pageRef = pageInfo.page.reference;
+  const pageSynopsis = pageInfo.page.synopsis;
+
+  useEffect(() => {
+    if (typeof window !== "undefined") {
+      const root = window.document.documentElement;
+      let theme;
+      if (localStorage) {
+        theme = localStorage.getItem("theme");
+        root.classList.add(localStorage.theme);
+      }
+    }
+  }, [theme]);
+  return (
+    <div className="">
       <div className="mainstyling  dark:bg-[var(--gradient-bg-right)]">
         <Header />
         <Main>
