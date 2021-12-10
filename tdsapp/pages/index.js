@@ -7,56 +7,40 @@ import Quote from "../components/Quote";
 import Synopsis from "../components/Synopsis";
 import MainHeader from "../components/MainHeader";
 import IconWrapper from "../components/IconWrapper";
-import dataDec from "./api/december.json"
+import dataDec from "./api/december.json";
+import Wrapper from "../components/Wrapper";
 
-export default function Home({theme}) {
+export default function Home({ theme }) {
   const d = new Date();
-  const day = d.getDate()
-  const month = d.getMonth() + 1
-  if(10 < 10){
-    console.log('0');
-  }
-   let dayID = String('0' + day + month)
-  console.log(dataDec[`'${dayID}'`]);
+  const day = d.getDate();
+  const month = d.getMonth() + 1;
+  const stringDay = String(day)
+  const stringMonth = String(month)
+  const dayID = `${stringDay}${stringMonth}`;
+
+  // if(day < 10){
+  //   dayID = `0${stringDay}${stringMonth}`
+  // }
+  // if(day < 10 && month < 10){
+  //   dayID = `0${stringDay}0${stringMonth}`
+  // }
+  // if(day > 10 && month < 10){
+  //   dayID = `${stringDay}0${stringMonth}`
+  // }
+  // else {
+    // dayID = `${stringDay}${stringMonth}`
+  // }
+  console.log(dataDec);
+  
   const pageInfo = {
     page: {
-      date: {
-        day: 2,
-        month: "July",
-      },
-      title: "ON DUTY AND CIRCUMSTANCE",
       img: {
         url: [
           require("../assets/img/marcus-aurelius.jpg"),
           require("../assets/img/Screen-Shot-2020-03-02-at-1.05.47-PM.webp"),
           require("../assets/img/220px-Epicteti_Enchiridion_Latinis_versibus_adumbratum_(Oxford_1715)_frontispiece.jpg"),
         ],
-        src: "Epictetus",
       },
-      filosof: "Marcus Aurelius",
-      quote: [
-        {
-          para: "Never shirk the proper dispatch of your duty, no matter if you are freezing or hot, groggy or well-rested, vilified or praised,",
-        },
-        {
-          para: "not even if dying or pressed by other demands. Even dying is one of the important assignments of life and, in this as in all else,",
-        },
-        {
-          para: "make the most of your resources to do well the duty at hand.",
-        },
-      ],
-      reference: "—MARCUS AURELIUS, MEDITATIONS, 6.2",
-      synopsis: [
-        {
-          para: "Will this make me rich? Will people be impressed? How hard do I need to try? How long will this take? What’s in it for me? Should I do this other thing instead? These are the questions we ask ourselves amid the day’s opportunities and obligations.",
-        },
-        {
-          para: "Marcus Aurelius had many responsibilities, as those who hold executive power do. He judged cases, heard appeals, sent troops into battle, appointed administrators, approved budgets. A lot rode on his choices and actions. Should he do this or that? What about this concern or that concern? When would he get to enjoy himself? The simple reminder above was a way to cut through the Gordian knot of incentives, complaints, fears, and competing interests.",
-        },
-        {
-          para: "It’s what we must use to decide what to do in each and every phase of life. Morality can be complicated—but the right thing is usually clear and intuitive enough to feel in our gut. Our duty is rarely easy, but it is important. It’s also usually the harder choice. But we must do it.",
-        },
-      ],
     },
   };
   const randomnumbergenerator = Math.floor(
@@ -64,7 +48,9 @@ export default function Home({theme}) {
   );
 
   const pageTitle = dataDec[`'${dayID}'`].title;
-  const pageDay = `${dataDec[`'${dayID}'`].date.day} ${dataDec[`'${dayID}'`].date.month}`;
+  const pageDay = `${dataDec[`'${dayID}'`].date.day} ${
+    dataDec[`'${dayID}'`].date.month
+  }`;
   const pagePhiloPic = pageInfo.page.img.url[randomnumbergenerator];
   const pagePhiloSrc = dataDec[`'${dayID}'`].img.src;
   const pageFilosof = dataDec[`'${dayID}'`].filosof;
@@ -83,22 +69,20 @@ export default function Home({theme}) {
     }
   }, [theme]);
   return (
-    <div className="">
-      <div className="mainstyling  dark:bg-[var(--gradient-bg-right)]">
-        <Header />
-        <Main>
-          <MainHeader title={pageTitle} date={pageDay} />
-          <ImageComponent
-            source={pagePhiloPic}
-            alt={pagePhiloSrc}
-            filosof={pageFilosof}
-          />
-          <Quote quote={pageQuote} refer={pageRef} />
-          <Synopsis para={pageSynopsis} />
-          <IconWrapper />
-        </Main>
-        <Footer />
-      </div>
-    </div>
+    <Wrapper>
+      <Header />
+      <Main>
+        <MainHeader title={pageTitle} date={pageDay} />
+        <ImageComponent
+          source={pagePhiloPic}
+          alt={pagePhiloSrc}
+          filosof={pageFilosof}
+        />
+        <Quote quote={pageQuote} refer={pageRef} />
+        <Synopsis para={pageSynopsis} />
+        <IconWrapper />
+      </Main>
+      <Footer />
+    </Wrapper>
   );
 }
