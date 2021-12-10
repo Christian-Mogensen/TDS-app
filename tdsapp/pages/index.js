@@ -16,7 +16,7 @@ export default function Home({ theme }) {
   const month = d.getMonth() + 1;
   const stringDay = String(day)
   const stringMonth = String(month)
-  const dayID;
+  const dayID = `${stringDay}${stringMonth}`;
 
   // if(day < 10){
   //   dayID = `0${stringDay}${stringMonth}`
@@ -28,7 +28,7 @@ export default function Home({ theme }) {
   //   dayID = `${stringDay}0${stringMonth}`
   // }
   // else {
-    dayID = `${stringDay}${stringMonth}`
+    // dayID = `${stringDay}${stringMonth}`
   // }
   console.log(dataDec);
   
