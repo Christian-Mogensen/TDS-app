@@ -18,18 +18,18 @@ export default function Home({ theme }) {
   const stringMonth = String(month)
   const dayID;
 
-  if(day < 10){
-    dayID = `0${stringDay}${stringMonth}`
-  }
-  if(day < 10 && month < 10){
-    dayID = `0${stringDay}0${stringMonth}`
-  }
-  if(day > 10 && month < 10){
-    dayID = `${stringDay}0${stringMonth}`
-  }
-  else {
+  // if(day < 10){
+  //   dayID = `0${stringDay}${stringMonth}`
+  // }
+  // if(day < 10 && month < 10){
+  //   dayID = `0${stringDay}0${stringMonth}`
+  // }
+  // if(day > 10 && month < 10){
+  //   dayID = `${stringDay}0${stringMonth}`
+  // }
+  // else {
     dayID = `${stringDay}${stringMonth}`
-  }
+  // }
   console.log(dataDec);
   
   const pageInfo = {
