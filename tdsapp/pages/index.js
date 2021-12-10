@@ -14,11 +14,24 @@ export default function Home({ theme }) {
   const d = new Date();
   const day = d.getDate();
   const month = d.getMonth() + 1;
-  if (10 < 10) {
-    console.log("0");
+  const stringDay = String(day)
+  const stringMonth = String(month)
+  const dayID;
+
+  if(day < 10){
+    dayID = `0${stringDay}${stringMonth}`
   }
-  let dayID = String("0" + day + month);
-  console.log(dataDec[`'${dayID}'`]);
+  if(day < 10 && month < 10){
+    dayID = `0${stringDay}0${stringMonth}`
+  }
+  if(day > 10 && month < 10){
+    dayID = `${stringDay}0${stringMonth}`
+  }
+  else {
+    dayID = `${stringDay}${stringMonth}`
+  }
+  console.log(dataDec);
+  
   const pageInfo = {
     page: {
       img: {
