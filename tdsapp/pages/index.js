@@ -4,7 +4,7 @@ import Main from "../components/Main";
 import Image from "next/image";
 import Footer from "../components/Footer";
 import Link from "next/link";
-import { getDate, format, getDayOfYear } from "date-fns";
+import { getDate, format, getDayOfYear, isLeapYear } from "date-fns";
 import { motion } from "framer-motion";
 
 export default function Home({theme}) {
@@ -20,6 +20,13 @@ export default function Home({theme}) {
   const gdy = getDayOfYear(new Date()) + 1;
   const dayB = day - 1;
   const dayA = day + 1;
+  const sly = isLeapYear(new Date())
+
+  // logic that figures out which page should be shown in case year is 366 days
+  const pageday = gdy>120 && sly == true ? gdy + 1 : gdy;
+  
+  console.log(sly);
+
   return (
     <Wrapper>
       <Header />
@@ -52,7 +59,7 @@ export default function Home({theme}) {
             <p className=" text-[1.5rem]   w-full text-center ">{month}</p>
           </div>
         </motion.div>
-        <Link href={`/book/${gdy}`}>
+        <Link href={`/book/${pageday}`}>
           <a>
             <motion.figure
               initial={{ y: 300 }}
