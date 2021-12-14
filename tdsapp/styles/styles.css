@@ -214,6 +214,8 @@
 }
 
 .image-content-2{
+  min-width: 207px;
+  min-height: 207px;
   grid-area: 1/1/-1/-1;
 }
 .image-text {
@@ -228,4 +230,10 @@
   width: 100%;
   height: 100%;  
   z-index: 2;
+}
+.positionerleft {
+  left: -120px;
+}
+.positionerright {
+  left: 330px;
 }
