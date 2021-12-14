@@ -2,7 +2,6 @@ import { motion } from "framer-motion";
 import UseSwitchesCustom from "./CustomSwitch";
 import CalendarIcon from "./CalendarIcon";
 import IconButton from "./IconButton";
-import Link from "next/link";
 
 const Header = () => {
   const textparent = {
@@ -33,8 +32,7 @@ const Header = () => {
       animate={{ opacity: 1, y: 0 }}
     >
       <div className="flex justify-between items-center">
-        <Link href="/" exact>
-          <a>
+       
             <h1 className="p-3  capitalize text-3xl dark:text-white dark:border-gray-50">
               <motion.span
                 variants={textparent}
@@ -47,13 +45,12 @@ const Header = () => {
                 <motion.span variants={textitem}> stoic</motion.span>
               </motion.span>
             </h1>
-          </a>
-        </Link>
+
         <motion.div
           initial={{ opacity: 0, x: 60 }}
           animate={{ opacity: 1, x: 0 }}
           transition={{ delay: 0.8 }}
-          className="flex gap-2"
+          className="flex gap-4 pr-3"
         >
           <IconButton>
             <CalendarIcon />
