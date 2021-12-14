@@ -7,7 +7,7 @@ const Synopsis = ({para}) => {
             className="first-of-type:first-letter:text-4xl first-of-type:first-letter:font-bold first-of-type:first-letter:float-left first-of-type:first-letter:mr-2 pb-5"
             key={index}
           >
-            {paragraf.para}
+            {paragraf}
           </p>
         ))}
       </div>

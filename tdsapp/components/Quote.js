@@ -4,7 +4,7 @@ const Quote = ({quote, refer}) => {
       <h4 className="special-quote dark:bg-gray-900 dark:bg-[var(--gradient-bg-left)] p-5 text-lg  border-l-[5px] dark:border-gray-700">
         {quote.map((paragraf, index) => (
           <p className="italic text-xl" key={index}>
-            {paragraf.para}
+            {paragraf}
           </p>
         ))}
       </h4>

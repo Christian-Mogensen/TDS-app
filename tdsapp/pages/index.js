@@ -1,6 +1,6 @@
+import { useState, useEffect } from "react";
 import Header from "../components/Header";
 import Main from "../components/Main";
-import { useState, useEffect } from "react";
 import Footer from "../components/Footer";
 import ImageComponent from "../components/ImageComponent";
 import Quote from "../components/Quote";
@@ -55,6 +55,7 @@ export default function Home({ theme }) {
       }
     }
   }, [theme]);
+
   return (
     <Wrapper>
       <Header />
