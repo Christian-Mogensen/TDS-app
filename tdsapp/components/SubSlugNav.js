@@ -4,7 +4,7 @@ import Link from "next/link";
 
 const SubSlugNav = () => {
   return (
-    <div className="flex justify-between">
+    <div className="flex justify-between overflow-hidden">
       <Link href="/" exact>
         <a>
           <div className="sticky top-0 py-3 px-2">
