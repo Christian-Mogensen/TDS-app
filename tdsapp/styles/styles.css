@@ -235,3 +235,6 @@
 .positionerright {
   left: 330px;
 }
+.icon__bookmark:hover{
+  fill: currentColor;
+}
