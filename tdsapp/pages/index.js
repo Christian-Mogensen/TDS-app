@@ -7,6 +7,7 @@ import Link from "next/link";
 import { getDate, format, getDayOfYear } from "date-fns";
 import { motion } from "framer-motion";
 
+
 export default function Home({theme}) {
   const pageImg = [
     require("../assets/img/marcus-aurelius.jpg"),
