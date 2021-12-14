@@ -7,8 +7,7 @@ import Link from "next/link";
 import { getDate, format, getDayOfYear } from "date-fns";
 import { motion } from "framer-motion";
 
-
-export default function Home({theme}) {
+export default function hero() {
   const pageImg = [
     require("../assets/img/marcus-aurelius.jpg"),
     require("../assets/img/Screen-Shot-2020-03-02-at-1.05.47-PM.webp"),
