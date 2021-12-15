@@ -1,6 +1,6 @@
 const FormGrp = ({children}) => {
     return (
-        <div className="flex flex-col py-3 floating-label-group">
+        <div className="flex flex-col py-3 relative">
             {children}
         </div>
     )

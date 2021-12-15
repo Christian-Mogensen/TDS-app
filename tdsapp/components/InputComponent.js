@@ -3,7 +3,7 @@ const InputComponent = ({type, placeholder}) => {
         
         <input
           type={type}
-          className="p-2 rounded outline-none border-b-2 border-b-transparent focus:border-b-green-400 dark:bg-white dark:text-gray-700 input form-control"
+          className="relative h-14 border-gray-400 p-2 outline-none border-b focus:border-b-4 focus:border-green-400 transition-all box-border dark:text-current bg-transparent inputtrigger"
           autoComplete="off"
         />
     )
