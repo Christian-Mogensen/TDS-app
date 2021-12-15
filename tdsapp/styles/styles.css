@@ -17,152 +17,6 @@
     rgba(25, 28, 59, 1) 100%
   );
 }
-
-.react-calendar {
-  max-width: 350px;
-  max-width: 100%;
-  /* background: white; */
-  line-height: 1.125em;
-}
-.react-calendar--doubleView {
-  width: 700px;
-}
-.react-calendar--doubleView .react-calendar__viewContainer {
-  display: flex;
-  margin: -0.5em;
-}
-.react-calendar--doubleView .react-calendar__viewContainer > * {
-  width: 50%;
-  margin: 0.5em;
-}
-.react-calendar,
-.react-calendar *,
-.react-calendar *:before,
-.react-calendar *:after {
-  -moz-box-sizing: border-box;
-  -webkit-box-sizing: border-box;
-  box-sizing: border-box;
-}
-.react-calendar button {
-  margin: 0;
-  border: 0;
-  outline: none;
-}
-.react-calendar button:enabled:hover {
-  cursor: pointer;
-}
-.react-calendar__navigation {
-  display: flex;
-  height: 44px;
-  margin-bottom: 1em;
-}
-.react-calendar__navigation button {
-  min-width: 44px;
-  background: none;
-}
-.react-calendar__navigation button:enabled:hover,
-.react-calendar__navigation button:enabled:focus {
-  background-color: #e6e6e6;
-}
-.react-calendar__navigation button[disabled] {
-  background-color: #f0f0f0;
-}
-.react-calendar__month-view__weekdays {
-  text-align: center;
-  text-transform: uppercase;
-  font-weight: bold;
-  font-size: 0.75em;
-}
-.react-calendar__month-view__weekdays__weekday {
-  padding: 0.5em;
-  text-decoration: none;
-}
-.react-calendar__month-view__weekNumbers .react-calendar__tile {
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  font-size: 0.75em;
-  font-weight: bold;
-  padding: calc(0.75em / 0.75) calc(0.5em / 0.75);
-}
-.react-calendar__month-view__days__day--weekend {
-  color: #bbbbbb;
-}
-.react-calendar__month-view__days__day--neighboringMonth {
-  color: #757575;
-}
-.react-calendar__year-view .react-calendar__tile,
-.react-calendar__decade-view .react-calendar__tile,
-.react-calendar__century-view .react-calendar__tile {
-  padding: 2em 0.5em;
-}
-.react-calendar__tile {
-  max-width: 100%;
-  text-align: center;
-  width: 50px;
-  height: 50px;
-  background: none;
-  position: relative;
-  z-index: 1;
-  border-radius: 5px;
-  -webkit-border-radius: 5px;
-  -moz-border-radius: 5px;
-  -ms-border-radius: 5px;
-  -o-border-radius: 5px;
-}
-.react-calendar__tile:disabled {
-  background-color: #f0f0f0;
-}
-.react-calendar__tile:enabled:hover,
-.react-calendar__tile:enabled:focus {
-  background-color: #2f2f2f;
-  color: white;
-  box-shadow: 0px 5px 0px 0px rgb(17, 17, 17);
-}
-.react-calendar__tile--now {
-  background: #ffff76;
-}
-.react-calendar__tile--now:enabled:hover,
-.react-calendar__tile--now:enabled:focus {
-  background: #ffffa9;
-}
-.react-calendar__tile--hasActive {
-  background: #76baff;
-}
-.react-calendar__tile--hasActive:enabled:hover,
-.react-calendar__tile--hasActive:enabled:focus {
-  background: #a9d4ff;
-}
-.react-calendar__tile--active {
-  background: rgb(187, 187, 187);
-  color: black;
-  position: relative;
-  z-index: 1;
-  border-radius: 5px;
-  -webkit-border-radius: 5px;
-  -moz-border-radius: 5px;
-  -ms-border-radius: 5px;
-  -o-border-radius: 5px;
-  box-shadow: 0px 5px 0px 0px rgb(165, 165, 165);
-}
-
-.react-calendar__tile--active:enabled:hover,
-.react-calendar__tile--active:enabled:focus {
-  background: #1087ff;
-}
-.react-calendar--selectRange .react-calendar__tile--hover {
-  background-color: #e6e6e6;
-}
-
-.special-quote::before {
-  top: -1rem;
-  left: 0;
-}
-.special-quote::after {
-  bottom: 0;
-  right: 10px;
-}
-
 .img-styling {
   height: 60vh;
   object-fit: cover;
@@ -172,38 +26,6 @@
   .mainstyling {
     @apply sm:max-w-[414px] max-w-[414px] min-h-screen flex flex-col justify-between w-full bg-gray-100 text-gray-700 dark:bg-black dark:text-white font-primary;
   }
-}
-
-.spc-btn {
-  box-shadow: 0px 5px 0px 0px rgba(16, 99, 20, 0.75);
-}
-
-.floating-label-group {
-  position: relative;
-  margin-top: 15px;
-  margin-bottom: 25px;
-}
-.floating-label-group .floating-label {
-  font-size: 24px;
-  position: absolute;
-  pointer-events: none;
-  top: 19px;
-  left: 112px;
-  transition: all 0.1s ease;
-  display: block;
-  -webkit-transition: all 0.1s ease;
-  -moz-transition: all 0.1s ease;
-  -ms-transition: all 0.1s ease;
-  -o-transition: all 0.1s ease;
-}
-.floating-label-group input:focus ~ .floating-label,
-.floating-label-group input:not(:focus):valid ~ .floating-label {
-  top: -15px;
-  bottom: 0px;
-  left: 0px;
-  font-size: 11px;
-  opacity: 1;
-  color: #404040;
 }
 .grid-container {
   display: grid;
@@ -229,12 +51,10 @@
   height: 100%;  
   z-index: 2;
 }
-.positionerleft {
-  left: -120px;
-}
-.positionerright {
-  left: 330px;
-}
 .icon__bookmark:hover{
   fill: currentColor;
+}
+.gridcontainerfp{
+  gap:10px;
+  grid-template-columns: repeat(3,1fr);
 }
