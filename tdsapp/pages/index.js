@@ -36,13 +36,13 @@ export default function Home({ theme }) {
       animate={{opacity:1, y:0}}
       transition={{duration:0.1,delay:0.3,type: "spring",
       stiffness: 30}}
-      className="border-b border-gray-300 dark:border-gray-700 flex flex-col justify-end h-[23vh] bg-gradient-to-t from-gray-100 dark:from-gray-900 to-transparent">
+      className="border-b border-gray-300 dark:border-gray-700 flex flex-col justify-end h-[23vh] dark:bg-gradient-to-t  dark:from-gray-900 dark:to-transparent">
         <h2 className="text-center font-bold font-secondary text-4xl mt-6 mb-2 ">
           Welcome stoic
         </h2>
         <p className="text-center pb-6 font-primary text-xl">Today is the</p>
       </motion.div>
-        <div className="overflow-hidden bg-gray-600 dark:bg-black grid grid-cols-[repeat(3,1fr)] justify-center gap-3 py-2">
+        <div className="overflow-hidden bg-gray-600 dark:bg-black grid grid-cols-[repeat(3,1fr)] justify-center gap-3 py-2 ">
           <motion.div
             initial={{ y: -300, opacity: 0 }}
             animate={{ y: 0, opacity: 0.3 }}
@@ -111,7 +111,7 @@ export default function Home({ theme }) {
               animate={{opacity:1, y:0}}
               transition={{duration:0.1,delay:0.2, type: "spring",
               stiffness: 30}}
-        className="z-20 mb-2 border-t border-gray-300 dark:border-gray-700 flex flex-col pt-3 h-[23vh] bg-gradient-to-b from-gray-200 dark:from-gray-900 to-transparent">
+        className="z-20 mb-2 border-t border-gray-300 dark:border-gray-700 flex flex-col pt-3 h-[23vh] dark:bg-gradient-to-b dark:from-gray-900 dark:to-transparent">
 
         <p className="text-center font-secondary ">
           Click to see what todays topic is

@@ -24,7 +24,7 @@
 
 @layer components {
   .mainstyling {
-    @apply sm:max-w-[414px] max-w-[414px] min-h-screen flex flex-col justify-between w-full bg-gray-100 text-gray-700 dark:bg-black dark:text-white font-primary;
+    @apply sm:max-w-[414px] max-w-[414px] min-h-screen flex flex-col justify-between w-full  text-gray-700 dark:bg-black dark:text-white font-primary;
   }
 }
 .grid-container {
