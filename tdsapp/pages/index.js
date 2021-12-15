@@ -36,7 +36,7 @@ export default function Home({ theme }) {
       animate={{opacity:1, y:0}}
       transition={{duration:0.1,delay:0.3,type: "spring",
       stiffness: 30}}
-      className="border-b border-gray-300 dark:border-gray-700 flex flex-col justify-end h-[23vh] bg-gradient-to-t from-gray-200 dark:from-gray-900 to-transparent">
+      className="border-b border-gray-300 dark:border-gray-700 flex flex-col justify-end h-[23vh] bg-gradient-to-t from-gray-100 dark:from-gray-900 to-transparent">
         <h2 className="text-center font-bold font-secondary text-4xl mt-6 mb-2 ">
           Welcome stoic
         </h2>
