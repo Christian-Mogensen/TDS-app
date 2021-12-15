@@ -42,7 +42,7 @@ export default function Home({ theme }) {
         </h2>
         <p className="text-center pb-6 font-primary text-xl">Today is the</p>
       </motion.div>
-        <div className="overflow-hidden dark:bg-black border-b border-t border-gray-300 dark:border-gray-700 grid grid-cols-[repeat(3,1fr)] justify-center gap-3 py-2 ">
+        <div className="overflow-hidden dark:bg-black border-b border-t border-gray-300 bg-gray-600 dark:border-gray-700 grid grid-cols-[repeat(3,1fr)] justify-center gap-3 py-2 ">
           <motion.div
             initial={{ y: -300, opacity: 0 }}
             animate={{ y: 0, opacity: 0.3 }}
