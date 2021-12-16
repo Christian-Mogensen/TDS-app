@@ -58,8 +58,25 @@
   gap:10px;
   grid-template-columns: repeat(3,1fr);
 }
+.inputtrigger{
+  overflow: hidden;
+}
 .inputtrigger, .labelanimation{
   transition:0.125s
+}
+
+.inputbar{
+  height: 4px;
+  width: 100%;
+  background: rgb(52, 211, 153);
+  position: absolute;
+  bottom: 12px;
+  left: -100%;
+  z-index: 11;
+  transition: 0.125s ease-in-out;
+}
+.inputtrigger:focus ~ .inputbar {
+  left: 0;
 }
 .inputtrigger:focus ~ .labelanimation{
   transform: translateY(-40px);
