@@ -7,7 +7,7 @@ const Main = ({ children }) => {
       animate={{ opacity:1,x: 0 }}
       exit={{x:400}}
       transition={{ type: "spring", mass: 0.1 }}
-      className="overflow-hidden flex flex-col justify-center min-h-[calc(100vh-166px)]"
+      className="overflow-hidden flex flex-col justify-center min-h-[calc(100vh-154px)]"
     >
       {children}
     </motion.main>
