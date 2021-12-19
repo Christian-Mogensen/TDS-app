@@ -6,12 +6,12 @@ import FormInput from "../components/FormInput"
 
 
 
-export default function Signin() {
+export default function Password({pw}) {
     return (
         <Wrapper>
             <Header />
             <Main>
-            <FormInput pw='email' />
+            <FormInput attr={pw} />
             </Main>
             <Footer />
         </Wrapper>

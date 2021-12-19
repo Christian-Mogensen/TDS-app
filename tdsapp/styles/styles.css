@@ -24,7 +24,7 @@
 
 @layer components {
   .mainstyling {
-    @apply sm:max-w-[414px] max-w-[414px] min-h-screen flex flex-col justify-between w-full  text-gray-700 dark:bg-black dark:text-white font-primary;
+    @apply sm:max-w-[414px] max-w-[414px] min-h-screen flex flex-col w-full  text-gray-700 dark:bg-black dark:text-white font-primary;
   }
 }
 .grid-container {
@@ -32,17 +32,18 @@
   grid-template-columns: repeat(3,1fr);
   grid-template-rows: repeat(3,1fr);
 }
-
 .image-content-2{
   min-width: 207px;
   min-height: 207px;
   grid-area: 1/1/-1/-1;
 }
+.test-1:hover .test-2{
+  transform: scale(150%);
+}
 .image-text {
   grid-area: 1/1/-1/-1;
-  display: flex;
-  justify-content: center;
-  align-items: center;
+  justify-self: end;
+  align-self: flex-end;
   z-index: 2;
 }
 .color-bg {
@@ -57,4 +58,33 @@
 .gridcontainerfp{
   gap:10px;
   grid-template-columns: repeat(3,1fr);
+}
+.inputtrigger{
+  overflow: hidden;
+}
+.inputtrigger, .labelanimation{
+  transition:0.125s
+}
+
+.inputbar{
+  height: 4px;
+  width: 100%;
+  background: rgb(52, 211, 153);
+  position: absolute;
+  bottom: 12px;
+  left: -100%;
+  z-index: 11;
+  transition: 0.125s ease-in-out;
+}
+.inputtrigger:focus ~ .inputbar {
+  left: 0;
+}
+.inputtrigger:focus ~ .labelanimation{
+  transform: translateY(-40px);
+  font-size: 1rem;
+  left: 0;
+  pointer-events: none;
+}
+.calenderformater {
+  grid-template-columns: repeat(7,1fr);
 }
