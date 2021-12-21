@@ -5,8 +5,45 @@ import useDarkMode from "../hooks/useDarkMode";
 import { useState, useEffect } from 'react';
 
 
+function MUISwitch(props, {theme}) {
+  const { getInputProps, checked, disabled, focusVisible } = useSwitch(props);
 
+  useEffect(() => {
+    if (typeof window !== "undefined") {
+      const root = window.document.documentElement;
+      let theme;
+      if (localStorage) {
+        theme = localStorage.getItem("theme");
+        root.classList.add(localStorage.theme);
+      }
+    }
+  }, [theme]);
+  
+  const stateClasses = {
+    checked,
+    disabled,
+    focusVisible,
+  };
+  const [colorTheme, setTheme] = useDarkMode();
+  const [themeTxt, setThemeTxt] = useState(false);
+  function themeToggle () {
+    setTheme(colorTheme)
+    setThemeTxt(themeTxt)
+    if (typeof window !== "undefined") {
+      localStorage.setItem('theme', colorTheme)
+      console.log(localStorage.theme);
+     }
+  }
 
+  return (
+    <SwitchRoot className={clsx(stateClasses)} onClick={themeToggle}>
+      <SwitchTrack>
+        <SwitchThumb className={clsx(stateClasses)} theme={colorTheme} />
+      </SwitchTrack>
+      <SwitchInput {...getInputProps()} theme={colorTheme}  />
+    </SwitchRoot>
+  );
+}
 
 const SwitchRoot = styled('span')`
   display: inline-block;
@@ -77,46 +114,6 @@ const SwitchTrack = styled('span')(
   box-shadow: inset 3px 2px 4px 1px #00000075
 `,
 );
-
-function MUISwitch(props, {theme}) {
-  const { getInputProps, checked, disabled, focusVisible } = useSwitch(props);
-
-  useEffect(() => {
-    if (typeof window !== "undefined") {
-      const root = window.document.documentElement;
-      let theme;
-      if (localStorage) {
-        theme = localStorage.getItem("theme");
-        root.classList.add(localStorage.theme);
-      }
-    }
-  }, [theme]);
-  
-  const stateClasses = {
-    checked,
-    disabled,
-    focusVisible,
-  };
-  const [colorTheme, setTheme] = useDarkMode();
-  const [themeTxt, setThemeTxt] = useState(false);
-  function themeToggle () {
-    setTheme(colorTheme)
-    setThemeTxt(themeTxt)
-    if (typeof window !== "undefined") {
-      localStorage.setItem('theme', colorTheme)
-     }
-     console.log(localStorage.theme);
-  }
-
-  return (
-    <SwitchRoot className={clsx(stateClasses)} onClick={themeToggle}>
-      <SwitchTrack>
-        <SwitchThumb className={clsx(stateClasses)} theme={colorTheme} />
-      </SwitchTrack>
-      <SwitchInput {...getInputProps()} theme={colorTheme}  />
-    </SwitchRoot>
-  );
-}
 
 export default function UseSwitchesCustom() {
   return <MUISwitch defaultChecked />;
