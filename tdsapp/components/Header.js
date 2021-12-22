@@ -1,7 +1,8 @@
-import { motion } from "framer-motion";
+import { motion, useViewportScroll } from "framer-motion";
 import UseSwitchesCustom from "./CustomSwitch";
 import CalendarIcon from "./CalendarIcon";
 import IconButton from "./IconButton";
+import React, {useSate, useEffect} from 'react'
 
 const Header = () => {
   const textparent = {
@@ -25,11 +26,31 @@ const Header = () => {
     },
     hidden: { opacity: 0, x: -50 },
   };
+  React.useEffect(() => {
+    return scrollY.onChange(() => update());
+  });
+  const onScrollHide = {
+    /** this is the "visible" key and it's correlating styles **/
+    visible: { opacity: 1, y: 0 },
+    /** this is the "hidden" key and it's correlating styles **/
+    hidden: { opacity: 1, y: -62 }
+  };
+  function update() {
+    if (scrollY?.current < scrollY?.prev) {
+      setHidden(false);
+    } else if (scrollY?.current > 100 && scrollY?.current > scrollY?.prev) {
+      setHidden(true);
+    }
+  }
+  const [hidden, setHidden] = React.useState(false);
+  const { scrollY } = useViewportScroll();
   return (
     <motion.header
       className="border-b overflow-hidden sticky top-0 z-50 bg-gray-200 dark:border-gray-700 dark:bg-gray-900 dark:bg-[var(--gradient-bg-right)] font-secondary font-bold shadow-md shadow-white"
       initial={{ opacity: 0, y: -60 }}
-      animate={{ opacity: 1, y: 0 }}
+      variants={onScrollHide}
+      animate={hidden ? "hidden" : "visible"}
+      transition={{ duration: 0.125 }}
     >
       <div className="flex justify-between items-center">
        

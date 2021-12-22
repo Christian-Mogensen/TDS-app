@@ -10,8 +10,7 @@ export default function useDarkMode() {
       root.classList.remove(colorTheme);
       root.classList.add(theme);
     },
-    [theme],
-    colorTheme
+    [theme,colorTheme]
   );
   return [colorTheme, setTheme];
 }

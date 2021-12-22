@@ -1,17 +1,17 @@
-import '../styles/styles.css'
-import '../styles/calendar.css'
+import "../styles/styles.css";
+import "../styles/calendar.css";
 
+import { useState } from "react";
+import { UserContextProvider } from "../context/userContext";
 
-function MyApp({ Component, pageProps }) {
-  if (typeof window !== "undefined") {
-    const root = window.document.documentElement
-    let theme;
-    if (localStorage) {
-    theme = localStorage.getItem("theme")
-    root.classList.add(localStorage.theme);
-    }
-    }
-  return <Component {...pageProps} />
+function MyApp({ Component, pageProps, theme }) {
+  const [user] = useState(false);
+  // return <Component {...pageProps} />
+  return (
+    <UserContextProvider>
+      <Component {...pageProps} />
+    </UserContextProvider>
+  );
 }
 
-export default MyApp
+export default MyApp;

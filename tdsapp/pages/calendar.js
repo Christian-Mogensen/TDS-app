@@ -52,7 +52,6 @@ useEffect(() => {
     if(today === true){
     document.querySelector('button').classList.add('bg-red-300')
    }} )
-    console.log(today);
 }, [day])
   return (
     <Wrapper>

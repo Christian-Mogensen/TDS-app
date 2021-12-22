@@ -88,3 +88,20 @@
 .calenderformater {
   grid-template-columns: repeat(7,1fr);
 }
+.grafikselem::before,
+.grafikselem::after
+{
+  position: absolute;
+  height: 2px;
+  
+  top: 50%;
+  width: 150px;
+  content: '';
+  z-index: 3;
+}
+.grafikselem::before {
+  left: 0;
+}
+.grafikselem::after{
+right: 0;
+}
