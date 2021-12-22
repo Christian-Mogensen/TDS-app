@@ -1,4 +1,4 @@
-import { isLeapYear } from "date-fns";
+import { isLeapYear, format } from "date-fns";
 import { onSnapshot } from "firebase/firestore";
 import { useEffect } from "react";
 import db from "../../firebase/firebase";
@@ -46,9 +46,10 @@ export default function page({ currentPage }) {
     require("../../assets/img/Screen-Shot-2020-03-02-at-1.05.47-PM.webp"),
     require("../../assets/img/220px-Epicteti_Enchiridion_Latinis_versibus_adumbratum_(Oxford_1715)_frontispiece.jpg"),
   ];
+  const monthDate = format(new Date(), "MMMM")
   const rng = Math.floor(Math.random() * (pageImg.length - 1));
   const pageTitle = currentPage.title;
-  const pageDay = `${currentPage.date.day} ${currentPage.date.month}`;
+  const pageDay = `${currentPage.date.day} ${monthDate}`;
   const pagePhiloPic = pageImg[rng];
   const pagePhiloSrc = currentPage.philosopher;
   const pageFilosof = currentPage.philosopher;
