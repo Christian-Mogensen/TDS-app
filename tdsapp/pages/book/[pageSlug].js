@@ -1,9 +1,11 @@
 import { isLeapYear, format } from "date-fns";
 import { onSnapshot } from "firebase/firestore";
-import { useEffect } from "react";
+import { useState, useEffect } from "react";
 import db from "../../firebase/firebase";
 import { collection, getDocs, getDoc, doc } from "firebase/firestore";
 import Link from "next/link";
+
+import ProgressBar from "react-scroll-progress-bar";
 
 import Header from "../../components/Header";
 import SubSlugNav from "../../components/SubSlugNav";
@@ -16,6 +18,7 @@ import MainHeader from "../../components/MainHeader";
 import IconWrapper from "../../components/IconWrapper";
 import Wrapper from "../../components/Wrapper";
 import { motion } from "framer-motion";
+
 import BookmarkIcon from "../../components/BookmarkIcon";
 
 export const getStaticProps = async ({ params }) => {
@@ -46,7 +49,7 @@ export default function page({ currentPage }) {
     require("../../assets/img/Screen-Shot-2020-03-02-at-1.05.47-PM.webp"),
     require("../../assets/img/220px-Epicteti_Enchiridion_Latinis_versibus_adumbratum_(Oxford_1715)_frontispiece.jpg"),
   ];
-  const monthDate = format(new Date(), "MMMM")
+  const monthDate = format(new Date(), "MMMM");
   const rng = Math.floor(Math.random() * (pageImg.length - 1));
   const pageTitle = currentPage.title;
   const pageDay = `${currentPage.date.day} ${monthDate}`;
@@ -57,12 +60,15 @@ export default function page({ currentPage }) {
   const pageRef = currentPage.reference;
   const pageSynopsis = currentPage.synopsis;
 
+
+
   return (
     <Wrapper>
       <Header />
       <SubSlugNav />
 
       <Main>
+
         <MainHeader title={pageTitle} date={pageDay} />
         <ImageComponent
           source={pagePhiloPic}

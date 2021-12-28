@@ -105,3 +105,25 @@
 .grafikselem::after{
 right: 0;
 }
+
+.progressBarContainer {
+  position: absolute;
+  z-index: 10;
+  background: rgba(255,255,255,0.01);
+  width: 100%;
+  left: 0;
+  bottom:0;
+}
+
+
+.progressBar {
+  background: linear-gradient(to left, red, violet);
+  transform-origin: top left;
+  transform: scale(0,0);
+  opacity: 0;
+}
+
+.progressBarContainer,
+.progressBar {
+  height: 5px;
+}
