@@ -24,13 +24,13 @@ export default function Home({ theme, root }) {
   const pagePhiloPic = pageImg[rng];
   const day = getDate(new Date());
   const month = format(new Date(), "MMMM");
-  const gdy = getDayOfYear(new Date()) + 1;
+  const gdy = getDayOfYear(new Date());
   const dayB = day - 1;
   const dayA = day + 1;
   const sly = isLeapYear(new Date());
 
   // logic that figures out which page should be shown in case year is 366 days
-  const pageday = gdy > 120 && sly == true ? gdy + 1 : gdy;
+  const pageday = gdy > 120 && sly ? gdy + 1 : gdy;
 
   return (
     // <Wrapper>
