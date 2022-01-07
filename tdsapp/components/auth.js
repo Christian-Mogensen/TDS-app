@@ -23,6 +23,7 @@ const Auth = () => {
           </h3>
           <button onClick={signInWithGoogle} className="bg-green-500 w-full py-3 rounded self-end text-white shadow-sm" type="submit"> Sign in with Google</button>
           <button onClick={signInWithGithub} className="bg-green-500 w-full py-3 rounded self-end text-white shadow-sm" type="submit"> Sign in with Github</button>
+          <button onClick={signInWithGithub} className="bg-green-500 w-full py-3 rounded self-end text-white shadow-sm" type="submit"> Sign in with Phone</button>
 
          
         </div>

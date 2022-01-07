@@ -5,9 +5,9 @@ import InputCompField from "./InputCompField";
 import Inputfield from "./Inputfield";
 
 const Signup = () => {
-  const emailRef = useRef();
-  const nameRef = useRef();
-  const psdRef = useRef();
+  const emailRef = useRef(null);
+  const nameRef = useRef(null);
+  const psdRef = useRef(null);
 
   const { registerUser } = useUserContext();
 
@@ -16,12 +16,13 @@ const Signup = () => {
     const email = emailRef.current.value;
     const name = nameRef.current.value;
     const password = psdRef.current.value;
-    if (email && name && password) registerUser(email, name, password);
+    if (email && name && password) {
+      registerUser(email, name, password);
+    }
   };
 
   return (
     <div className="mx-3 rounded ">
-      
       <h2 className="capitalize text-3xl mb-3 text-center text-current">
         New user
       </h2>

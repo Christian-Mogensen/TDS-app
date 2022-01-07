@@ -31,7 +31,6 @@ function MUISwitch(props, {theme}) {
     setThemeTxt(themeTxt)
     if (typeof window !== "undefined") {
       localStorage.setItem('theme', colorTheme)
-      console.log(localStorage.theme);
      }
   }
 
