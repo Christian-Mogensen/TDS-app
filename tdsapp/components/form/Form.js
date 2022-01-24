@@ -6,7 +6,7 @@ import SignupComponent from "./SignupComponent";
 import FormXtraBtn from "../FormXtraBtn";
 import AtnBtn from "./AtnBtn";
 
-const Form = () => {
+const Form = ({isOpen}) => {
   const emailRef = useRef();
   const psdRef = useRef();
   const [formState, setformState] = useState(false);
@@ -19,9 +19,22 @@ const Form = () => {
     const password = psdRef.current.value;
     if (email && password) signInUser(email, password);
   };
+  const formVariant = {
+    open: { y: 0,
+    transition:{
+      delay:0.5
+    } },
+    closed: { y: "0",
+  transition:{
+    delay:0
+  } },
+  }
 
   return (
-    <form
+    <motion.form
+    variants={formVariant}
+    initial={{y:'0'}}
+    animate={isOpen ? "open" : "closed"}
       className="overflow-hidden relative flex flex-col gap-3 bg-gray-100 shadow-md p-3 rounded min-w-[320px]"
       onSubmit={onSubmit}
     >
@@ -32,7 +45,7 @@ const Form = () => {
           !formState ? "New user? click here " : "Already have an account"
         }
       />
-    </form>
+    </motion.form>
   );
 };
 

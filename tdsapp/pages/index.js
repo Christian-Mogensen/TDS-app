@@ -31,6 +31,8 @@ export default function Home({ theme, root }) {
   // logic that figures out which page should be shown in case year is 366 days
   const pageday = gdy > 120 && sly ? gdy + 1 : gdy;
 
+ 
+
   return (
     <Wrapper>
       <Header />

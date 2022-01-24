@@ -1,5 +1,5 @@
 import { useState } from "react";
-import { motion } from "framer-motion";
+import { motion, AnimatePresence } from "framer-motion";
 import SignupForm from "../components/form/SignupForm";
 import LoginIcon from "@mui/icons-material/Login";
 import LogoutIcon from "@mui/icons-material/Logout";
@@ -10,8 +10,12 @@ export default function Test() {
     console.log("test");
   };
   const variants = {
-    open: { y: 0 },
-    closed: { y: 100 },
+    open: { x: 0 },
+    closed: { x: 50 },
+  };
+  const variant2 = {
+    open: { x: -70 },
+    closed: { x: -22 },
   };
   return (
     <>
@@ -20,31 +24,37 @@ export default function Test() {
         isOpen={toggle}
         toggleModal={modalFunction}
       />
-      <motion.button
-        initial={{ x: 100 }}
-        animate={{ x: 0 }}
-        className="overflow-hidden fixed z-[49] -translate-x-1/2 left-1/2 top-1/2 p-3 bg-green-500 rounded-full"
-        onClick={modalFunction}
-      >
-        {!toggle ? (
+      <AnimatePresence>
+        <motion.button
+          // initial={{ x: 100 }}
+          // animate={{ x: 0 }}
+          className={`overflow-hidden relative z-[55] h-12 transitionspeed w-12 p-3 ${
+            !toggle ? "bg-green-500" : "bg-red-500"
+          } rounded-full flex`}
+          onClick={modalFunction}
+        >
           <motion.div
-            initial={{ y: 0 }}
-            animate={toggle ? { y: 0 } : { y: 100 }}
-            transition={{ ease: "circIn" }}
+            className="text-white"
+            exit={{ x: 50 }}
+            animate={toggle ? "closed" : "open"}
+            transition={{ ease: "circIn", duration: 0.2 }}
             variants={variants}
           >
             <LoginIcon />
           </motion.div>
-        ) : (
+
           <motion.div
-            initial={{ y: 0 }}
-            animate={toggle ? { y: 100 } : { y: 0 }}
-            transition={{ ease: "circIn" }}
+            // initial={{x:0}}
+            initial={{ x: -70 }}
+            exit={{ x: -50 }}
+            animate={toggle ? "closed" : "open"}
+            transition={{ ease: "circIn", duration: 0.2 }}
+            variants={variant2}
           >
             <LogoutIcon />
           </motion.div>
-        )}
-      </motion.button>
+        </motion.button>
+      </AnimatePresence>
     </>
   );
 }
