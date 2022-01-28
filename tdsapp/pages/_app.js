@@ -5,11 +5,7 @@ import { UserContextProvider } from "../context/userContext";
 
 function MyApp({ Component, pageProps }) {
   const [user] = useState(false);
-  let colorTheme
-  useEffect(()=>{
-    colorTheme = localStorage.theme
-    console.log(colorTheme);
-  })
+
   return (
     
     <UserContextProvider>
