@@ -55,13 +55,13 @@ useEffect(() => {
 }, [day])
   return (
     <Wrapper>
-      <Header />
+      {/* <Header /> */}
       <Main>
-        <div className="p-3 bg-black border-b border-t border-gray-700">
-          <div className="grid grid-cols-7 gap-3 w-full">
+        <div className="p-3 bg-black border-t border-b border-gray-700">
+          <div className="grid w-full grid-cols-7 gap-3">
             {periodDate[0].day.map((date, index) => (
               <button
-                className="hover:opacity-100 transition-all opacity-50 w-full py-3 rounded-md flex justify-center items-center active:bg-green-500"
+                className="flex items-center justify-center w-full py-3 transition-all rounded-md opacity-50 hover:opacity-100 active:bg-green-500"
                 key={index}
                 onLoadStart={setActiveDate}
               >

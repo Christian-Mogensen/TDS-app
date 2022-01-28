@@ -1,6 +1,6 @@
 import React from 'react';
 import { HiMoon, HiSun } from 'react-icons/hi';
-import { ThemeContext } from '../context/themeToggle';
+import { ThemeContext } from '../context/ThemeToggle';
 
 
 const CustomSwitch = () => {
