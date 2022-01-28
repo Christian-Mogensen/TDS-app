@@ -3,7 +3,7 @@ import { HiMoon, HiSun } from 'react-icons/hi';
 import { ThemeContext } from '../context/themeToggle';
 
 
-const Toggle = () => {
+const CustomSwitch = () => {
     const { theme, setTheme } = React.useContext(ThemeContext);
 
     return (
@@ -23,4 +23,4 @@ const Toggle = () => {
     );
 };
 
-export default Toggle;
+export default CustomSwitch;
