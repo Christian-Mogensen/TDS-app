@@ -8,7 +8,7 @@ import { useEffect } from "react";
 import { getDate, format, getDayOfYear, isLeapYear } from "date-fns";
 import { motion } from "framer-motion";
 import LoginBar from "../components/LoginBar";
-import { ThemeProvider } from "../context/themeToggle";
+import { ThemeProvider } from "../context/ThemeToggle";
 
 export default function Home({ theme, root }) {
   const pageImg = [
