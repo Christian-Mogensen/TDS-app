@@ -1,13 +1,17 @@
 import "../styles/styles.css";
 import "../styles/calendar.css";
-
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import { UserContextProvider } from "../context/userContext";
 
-function MyApp({ Component, pageProps, theme }) {
+function MyApp({ Component, pageProps }) {
   const [user] = useState(false);
-  // return <Component {...pageProps} />
+  let colorTheme
+  useEffect(()=>{
+    colorTheme = localStorage.theme
+    console.log(colorTheme);
+  })
   return (
+    
     <UserContextProvider>
       <Component {...pageProps} />
     </UserContextProvider>

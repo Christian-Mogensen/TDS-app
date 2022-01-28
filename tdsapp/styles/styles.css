@@ -26,6 +26,9 @@
   .mainstyling {
     @apply sm:max-w-[414px] max-w-[414px] min-h-screen flex flex-col w-full  text-gray-700 dark:bg-black dark:text-white font-primary;
   }
+  .specialbuttonstyle {
+    @apply absolute w-8 h-8 flex justify-center items-center z-[52] right-3 top-3 rounded-full
+  }
 }
 .grid-container {
   display: grid;
@@ -65,13 +68,16 @@
 .inputtrigger, .labelanimation{
   transition:0.125s
 }
+.transitionspeed {
+  transition: .5s;
+}
 
 .inputbar{
   height: 4px;
   width: 100%;
   background: rgb(52, 211, 153);
   position: absolute;
-  bottom: 12px;
+  bottom:8px;
   left: -100%;
   z-index: 11;
   transition: 0.125s ease-in-out;
