@@ -33,7 +33,7 @@ export default function Home({ theme, root }) {
   const pageday = gdy > 120 && sly ? gdy + 1 : gdy;
 
   return (
-    <ThemeProvider>
+    
       <Wrapper>
         <Header />
         <Main>
@@ -103,6 +103,6 @@ export default function Home({ theme, root }) {
         <LoginBar />
         <Footer />
       </Wrapper>
-    </ThemeProvider>
+  
   );
 }
