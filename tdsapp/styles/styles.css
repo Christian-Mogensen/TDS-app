@@ -127,9 +127,31 @@ right: 0;
   transform-origin: top left;
   transform: scale(0,0);
   opacity: 0;
+  -webkit-transform: scale(0,0);
+  -moz-transform: scale(0,0);
+  -ms-transform: scale(0,0);
+  -o-transform: scale(0,0);
 }
 
 .progressBarContainer,
 .progressBar {
   height: 5px;
+}
+.heightContainer{
+  transition: 0.2s;
+  max-height: calc(100vh - 55px);
+  -webkit-transition: 0.2s;
+  -moz-transition: 0.2s;
+  -ms-transition: 0.2s;
+  -o-transition: 0.2s;
+}
+.heightContainer::-webkit-scrollbar{
+  display: none;
+}
+.transition-icon-speed{
+  transition: 2s;
+  -webkit-transition: 2s;
+  -moz-transition: 2s;
+  -ms-transition: 2s;
+  -o-transition: 2s;
 }

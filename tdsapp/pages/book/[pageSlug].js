@@ -52,7 +52,7 @@ export default function page({ currentPage }) {
   const monthDate = format(new Date(), "MMMM");
   const rng = Math.floor(Math.random() * (pageImg.length - 1));
   const pageTitle = currentPage.title;
-  const pageDay = `${currentPage.date.day} ${monthDate}`;
+  const pageDay = `${currentPage.date.day} ${currentPage.date.month}`;
   const pagePhiloPic = pageImg[rng];
   const pagePhiloSrc = currentPage.philosopher;
   const pageFilosof = currentPage.philosopher;

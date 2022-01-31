@@ -100,8 +100,6 @@ export default function Home({ theme, root }) {
             </Link>
           </div>
         </Main>
-        <LoginBar />
-        <Footer />
       </Wrapper>
   
   );
