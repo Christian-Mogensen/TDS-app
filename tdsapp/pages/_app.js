@@ -1,15 +1,12 @@
-import "../styles/styles.css";
-import "../styles/calendar.css";
-import { useEffect, useState } from "react";
-import { UserContextProvider } from "../context/userContext";
-import { ThemeProvider } from "../context/ThemeToggle";
-import { StateContextProvider, useStateContext } from "../context/stateContext";
-import Wrapper from "../components/Wrapper";
-import Header from "../components/Header";
+import { useState } from "react";
 import Footer from "../components/Footer";
+import Wrapper from "../components/Wrapper";
+import { StateContextProvider } from "../context/stateContext";
+import { ThemeProvider } from "../context/ThemeToggle";
+import { UserContextProvider } from "../context/userContext";
+import "../styles/calendar.css";
+import "../styles/styles.css";
 
-import { AnimatePresence } from "framer-motion";
-import Calendar from "../components/Calendar/Calendar";
 function MyApp({ Component, pageProps }) {
   const [user] = useState(false);
 
@@ -18,7 +15,6 @@ function MyApp({ Component, pageProps }) {
       <StateContextProvider>
         <UserContextProvider>
           <Wrapper>
-            {/* <Header /> */}
             <Component {...pageProps} />
             <Footer />
           </Wrapper>

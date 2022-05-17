@@ -1,11 +1,10 @@
 import { motion, useViewportScroll } from "framer-motion";
+import React, { useState } from "react";
 import { useStateContext } from "../context/stateContext";
-import UseSwitchesCustom from "./CustomSwitch";
 import CalendarIcon from "./CalendarIcon";
+import UseSwitchesCustom from "./CustomSwitch";
 import IconButton from "./IconButton";
-import React, { useState, useEffect } from "react";
 import ProgressBar from "./ProgressBar";
-import Calendar from "./Calendar/Calendar";
 const Header = () => {
   const textparent = {
     visible: {
@@ -28,13 +27,11 @@ const Header = () => {
     },
     hidden: { opacity: 0, x: -50 },
   };
-  React.useEffect(() => {
+  useEffect(() => {
     return scrollY.onChange(() => update());
   });
   const onScrollHide = {
-    /** this is the "visible" key and it's correlating styles **/
     visible: { opacity: 1, y: 0 },
-    /** this is the "hidden" key and it's correlating styles **/
     hidden: { opacity: 1, y: -57 },
   };
   function update() {

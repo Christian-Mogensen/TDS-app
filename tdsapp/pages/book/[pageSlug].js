@@ -1,21 +1,16 @@
-import { format } from "date-fns";
-import Head from "next/head";
-import { useState, useEffect } from "react";
 import { collection, doc, getDoc, getDocs } from "firebase/firestore";
-import Footer from "../../components/Footer";
+import { AnimatePresence } from "framer-motion";
+import Head from "next/head";
+import { useState } from "react";
+import Calendar from "../../components/Calendar/Calendar";
 import Header from "../../components/Header";
-import IconWrapper from "../../components/IconWrapper";
 import ImageComponent from "../../components/ImageComponent";
 import Main from "../../components/Main";
 import MainHeader from "../../components/MainHeader";
 import Quote from "../../components/Quote";
-import SubSlugNav from "../../components/SubSlugNav";
 import Synopsis from "../../components/Synopsis";
-import Wrapper from "../../components/Wrapper";
-import db from "../../firebase/firebase";
 import { useStateContext } from "../../context/stateContext";
-import { AnimatePresence } from "framer-motion";
-import Calendar from "../../components/Calendar/Calendar";
+import db from "../../firebase/firebase";
 
 export const getStaticProps = async ({ params }) => {
   const currentPage = doc(db, `book/${params?.pageSlug}`);
@@ -67,7 +62,6 @@ export default function page({ currentPage }) {
         />
         <title>{pageTitle}</title>
       </Head>
-      {/* <SubSlugNav /> */}
       <Header />
       <AnimatePresence>{toggled && <Calendar />}</AnimatePresence>
       <AnimatePresence>
