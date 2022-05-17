@@ -9,7 +9,7 @@ import { getDate, format, getDayOfYear, isLeapYear } from "date-fns";
 import { motion, AnimatePresence } from "framer-motion";
 import LoginBar from "../components/LoginBar";
 import { ThemeProvider } from "../context/ThemeToggle";
-import Calendar from "../components/Calendar";
+import Calendar from "../components/Calendar/Calendar";
 import { useStateContext } from "../context/stateContext";
 
 export default function LandingPage({ theme, root }) {

@@ -15,7 +15,7 @@ import Wrapper from "../../components/Wrapper";
 import db from "../../firebase/firebase";
 import { useStateContext } from "../../context/stateContext";
 import { AnimatePresence } from "framer-motion";
-import Calendar from "../../components/Calendar";
+import Calendar from "../../components/Calendar/Calendar";
 
 export const getStaticProps = async ({ params }) => {
   const currentPage = doc(db, `book/${params?.pageSlug}`);

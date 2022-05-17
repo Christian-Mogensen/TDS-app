@@ -9,7 +9,7 @@ import Header from "../components/Header";
 import Footer from "../components/Footer";
 
 import { AnimatePresence } from "framer-motion";
-import Calendar from "../components/Calendar";
+import Calendar from "../components/Calendar/Calendar";
 function MyApp({ Component, pageProps }) {
   const [user] = useState(false);
 
