@@ -6,12 +6,12 @@ const LoginBar = ({ status, state }) => {
   const { user, logoutUser } = useUserContext();
   // console.log(user);
   return (
-    <aside className=" bg-gray-300 dark:text-white dark:bg-gray-600 border-t  dark:border-gray-700 flex items-center justify-between font-secondary capitalize h-12">
-      <div className="mx-3 flex">
-        <div className=" w-6 h-6 rounded-full flex justify-center items-center border-2 border-current overflow-hidden mr-2">
+    <aside className="relative z-50 flex items-center justify-between h-12 capitalize bg-gray-300 border-t  dark:text-white dark:bg-gray-600 dark:border-gray-700 font-secondary">
+      <div className="flex mx-3">
+        <div className="flex items-center justify-center w-6 h-6 mr-2 overflow-hidden border-2 border-current rounded-full ">
           <svg
             xmlns="http://www.w3.org/2000/svg"
-            className="h-6 w-6 top-1 relative"
+            className="relative w-6 h-6 top-1"
             viewBox="0 0 20 20"
             fill="currentColor"
           >
@@ -30,7 +30,7 @@ const LoginBar = ({ status, state }) => {
           <IconButton onClick={logoutUser} aria-label="logout button">
             <svg
               xmlns="http://www.w3.org/2000/svg"
-              className="h-6 w-6"
+              className="w-6 h-6"
               fill="none"
               viewBox="0 0 24 24"
               stroke="currentColor"
@@ -49,7 +49,7 @@ const LoginBar = ({ status, state }) => {
               <IconButton aria-label="signin button">
                 <svg
                   xmlns="http://www.w3.org/2000/svg"
-                  className="h-5 w-5"
+                  className="w-5 h-5"
                   fill="none"
                   viewBox="0 0 24 24"
                   stroke="currentColor"

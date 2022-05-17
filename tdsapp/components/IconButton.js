@@ -1,10 +1,15 @@
-import {motion} from 'framer-motion'
-const IconButton = ({children, ...props}) => {
-    return (
-<motion.button variants={props.variants}{...props} className="h-8 w-8 dark:bg-gray-200 dark:text-gray-700 flex justify-center items-center rounded-full hover:scale-105 transition-all text-white bg-gray-900 ">
-    {children}
-</motion.button>
-    )
-}
+import { motion } from "framer-motion";
+const IconButton = ({ children, ...props }) => {
+  return (
+    <motion.button
+      onClick={props.onClick}
+      variants={props.variants}
+      {...props}
+      className="flex items-center justify-center w-8 h-8 text-white transition-all bg-gray-900 rounded-full dark:bg-gray-200 dark:text-gray-700 hover:scale-105 "
+    >
+      {children}
+    </motion.button>
+  );
+};
 
-export default IconButton
+export default IconButton;

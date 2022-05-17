@@ -3,11 +3,11 @@ import { motion } from "framer-motion";
 const Main = ({ children }) => {
   return (
     <motion.main
-      initial={{ opacity:0,x: -400 }}
-      animate={{ opacity:1,x: 0 }}
-      exit={{x:400}}
+      initial={{ opacity: 0, y: "100%" }}
+      animate={{ opacity: 1, y: 0 }}
+      exit={{ y: "100%" }}
       transition={{ type: "spring", mass: 0.1 }}
-      className="overflow-hidden flex flex-col justify-center min-h-[calc(100vh-166px)]"
+      className="flex flex-col justify-center"
     >
       {children}
     </motion.main>

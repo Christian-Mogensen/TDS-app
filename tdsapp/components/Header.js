@@ -1,10 +1,11 @@
 import { motion, useViewportScroll } from "framer-motion";
+import { useStateContext } from "../context/stateContext";
 import UseSwitchesCustom from "./CustomSwitch";
 import CalendarIcon from "./CalendarIcon";
 import IconButton from "./IconButton";
 import React, { useState, useEffect } from "react";
 import ProgressBar from "./ProgressBar";
-
+import Calendar from "./Calendar";
 const Header = () => {
   const textparent = {
     visible: {
@@ -43,7 +44,8 @@ const Header = () => {
       setHidden(true);
     }
   }
-  const [hidden, setHidden] = React.useState(false);
+  const { toggled, setToggled } = useStateContext();
+  const [hidden, setHidden] = useState(false);
   const { scrollY } = useViewportScroll();
 
   return (
@@ -54,8 +56,8 @@ const Header = () => {
       animate={hidden ? "hidden" : "visible"}
       transition={{ duration: 0.125 }}
     >
-      <div className="flex justify-between items-center">
-        <h1 className="p-3  capitalize text-3xl dark:text-white dark:border-gray-50">
+      <div className="flex items-center justify-between">
+        <h1 className="p-3 text-3xl capitalize dark:text-white dark:border-gray-50">
           <motion.span
             variants={textparent}
             transition={{ delay: 1 }}
@@ -74,7 +76,7 @@ const Header = () => {
           transition={{ delay: 0.8 }}
           className="flex gap-4 pr-3"
         >
-          <IconButton>
+          <IconButton onClick={() => setToggled(!toggled)}>
             <CalendarIcon />
           </IconButton>
           <UseSwitchesCustom />

@@ -1,77 +1,140 @@
-import Wrapper from "../components/Wrapper";
-import Header from "../components/Header";
-import Main from "../components/Main";
-import Image from "next/image";
-import Footer from "../components/Footer";
-import Link from "next/link";
+import { ChevronLeftIcon, ChevronRightIcon } from "@heroicons/react/solid";
 import {
-  lightFormat,
-  getDate,
-  getMonth,
-  format,
-  getYear,
-  getDayOfYear,
-  isLeapYear,
+  add,
   eachDayOfInterval,
-  startOfYear,
-  endOfYear,
-  startOfMonth,
   endOfMonth,
-  eachMonthOfInterval,
+  format,
+  getDay,
+  getDayOfYear,
+  isEqual,
+  isSameMonth,
+  isToday,
+  parse,
+  startOfToday,
 } from "date-fns";
-import { motion } from "framer-motion";
-import Calendar from "react-calendar";
-import { useState, useEffect } from "react";
+import Link from "next/link";
+import { useState } from "react";
 
+function classNames(...classes) {
+  return classes.filter(Boolean).join(" ");
+}
 
-export default function calendar() {
-  const day = getDate(new Date());
-  const month = format(new Date(), "MMMM");
+export default function Example() {
+  let today = startOfToday();
+  let [selectedDay, setSelectedDay] = useState(today);
+  let [currentMonth, setCurrentMonth] = useState(format(today, "MMM-yyyy"));
+  let firstDayCurrentMonth = parse(currentMonth, "MMM-yyyy", new Date());
 
-  const dayResult = eachDayOfInterval({
-    start: startOfMonth(new Date()),
-    end: endOfMonth(new Date()),
+  let days = eachDayOfInterval({
+    start: firstDayCurrentMonth,
+    end: endOfMonth(firstDayCurrentMonth),
   });
-  const monthResult = eachMonthOfInterval({
-    start: startOfMonth(new Date()),
-    end: endOfMonth(new Date()),
-  });
-  const dayArr = [];
-  const periodDate = [];
-  let d;
-  dayResult.map((day) => ((d = format(day, "d")), dayArr.push(d)));
-  periodDate.push({ month: month, day: dayArr });
+  function previousMonth() {
+    let firstDayNextMonth = add(firstDayCurrentMonth, { months: -1 });
+    setCurrentMonth(format(firstDayNextMonth, "MMM-yyyy"));
+  }
 
-
-  const [activeDate, setActiveDate] = useState()
-  const date = periodDate[0].day;
-  let today;
-useEffect(() => {
-  setActiveDate(()=>{
-    today = date.find( item => item == day)
-    if(today === true){
-    document.querySelector('button').classList.add('bg-red-300')
-   }} )
-}, [day])
+  function nextMonth() {
+    let firstDayNextMonth = add(firstDayCurrentMonth, { months: 1 });
+    setCurrentMonth(format(firstDayNextMonth, "MMM-yyyy"));
+  }
+  console.log(getDayOfYear(days));
   return (
-    <Wrapper>
-      {/* <Header /> */}
-      <Main>
-        <div className="p-3 bg-black border-t border-b border-gray-700">
-          <div className="grid w-full grid-cols-7 gap-3">
-            {periodDate[0].day.map((date, index) => (
+    <div className="pt-16">
+      <div className="max-w-md px-4 mx-auto sm:px-7 md:max-w-4xl md:px-6">
+        <div className="md:grid md:grid-cols-2 md:divide-x md:divide-gray-200">
+          <div className="md:pr-14">
+            <div className="flex items-center">
+              <h2 className="flex-auto font-semibold text-gray-900">
+                {format(firstDayCurrentMonth, "MMMM yyyy")}
+              </h2>
               <button
-                className="flex items-center justify-center w-full py-3 transition-all rounded-md opacity-50 hover:opacity-100 active:bg-green-500"
-                key={index}
-                onLoadStart={setActiveDate}
+                type="button"
+                onClick={previousMonth}
+                className="-my-1.5 flex flex-none items-center justify-center p-1.5 text-gray-400 hover:text-gray-500"
               >
-                {date}
+                <span className="sr-only">Previous month</span>
+                <ChevronLeftIcon className="w-5 h-5" aria-hidden="true" />
               </button>
-            ))}
+              <button
+                onClick={nextMonth}
+                type="button"
+                className="-my-1.5 -mr-1.5 ml-2 flex flex-none items-center justify-center p-1.5 text-gray-400 hover:text-gray-500"
+              >
+                <span className="sr-only">Next month</span>
+                <ChevronRightIcon className="w-5 h-5" aria-hidden="true" />
+              </button>
+            </div>
+            <div className="grid grid-cols-7 mt-10 text-xs leading-6 text-center text-gray-500">
+              <div>S</div>
+              <div>M</div>
+              <div>T</div>
+              <div>W</div>
+              <div>T</div>
+              <div>F</div>
+              <div>S</div>
+            </div>
+            <div className="grid grid-cols-7 mt-2 text-sm">
+              {days.map((day, dayIdx) => (
+                <div
+                  key={day.toString()}
+                  className={classNames(
+                    dayIdx === 0 && colStartClasses[getDay(day)],
+                    "py-1.5"
+                  )}
+                >
+                  <Link href={`/book/${getDayOfYear(day) + 1}`}>
+                    <button
+                      type="button"
+                      onClick={() => {
+                        setSelectedDay(day);
+                      }}
+                      className={classNames(
+                        isEqual(day, selectedDay) && "text-white",
+                        !isEqual(day, selectedDay) &&
+                          isToday(day) &&
+                          "text-green-500",
+                        !isEqual(day, selectedDay) &&
+                          !isToday(day) &&
+                          isSameMonth(day, firstDayCurrentMonth) &&
+                          "text-gray-900",
+                        !isEqual(day, selectedDay) &&
+                          !isToday(day) &&
+                          !isSameMonth(day, firstDayCurrentMonth) &&
+                          "text-gray-400",
+                        isEqual(day, selectedDay) &&
+                          isToday(day) &&
+                          "bg-green-500",
+                        isEqual(day, selectedDay) &&
+                          !isToday(day) &&
+                          "bg-gray-900",
+                        !isEqual(day, selectedDay) && "hover:bg-gray-400",
+                        (isEqual(day, selectedDay) || isToday(day)) &&
+                          "font-semibold",
+                        "mx-auto flex h-8 w-8 items-center justify-center rounded-sm bg-gray-200"
+                      )}
+                    >
+                      <time dateTime={format(day, "yyyy-MM-dd")}>
+                        {format(day, "d")}
+                      </time>
+                    </button>
+                  </Link>
+                </div>
+              ))}
+            </div>
           </div>
         </div>
-      </Main>
-      <Footer />
-    </Wrapper>
+      </div>
+    </div>
   );
 }
+
+let colStartClasses = [
+  "",
+  "col-start-2",
+  "col-start-3",
+  "col-start-4",
+  "col-start-5",
+  "col-start-6",
+  "col-start-7",
+];
