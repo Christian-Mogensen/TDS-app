@@ -1,5 +1,5 @@
 import { motion, useViewportScroll } from "framer-motion";
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 import { useStateContext } from "../context/stateContext";
 import CalendarIcon from "./CalendarIcon";
 import UseSwitchesCustom from "./CustomSwitch";
