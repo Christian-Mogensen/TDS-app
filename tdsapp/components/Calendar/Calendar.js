@@ -1,4 +1,3 @@
-import { ChevronLeftIcon, ChevronRightIcon } from "@heroicons/react/solid";
 import {
   add,
   eachDayOfInterval,
@@ -12,10 +11,11 @@ import {
   parse,
   startOfToday,
 } from "date-fns";
+import { motion } from "framer-motion";
 import Link from "next/link";
 import { useState } from "react";
-import { motion } from "framer-motion";
 import { useStateContext } from "../../context/stateContext";
+import { LeftIcon, RightIcon } from "./Icons";
 
 function classNames(...classes) {
   return classes.filter(Boolean).join(" ");
@@ -64,7 +64,7 @@ export default function Calendar() {
             className="-my-1.5 flex flex-none items-center justify-center p-1.5 text-gray-400 hover:text-gray-500"
           >
             <span className="sr-only">Previous month</span>
-            <ChevronLeftIcon className="w-5 h-5" aria-hidden="true" />
+            <LeftIcon />
           </button>
           <button
             onClick={nextMonth}
@@ -72,7 +72,7 @@ export default function Calendar() {
             className="-my-1.5 -mr-1.5 ml-2 flex flex-none items-center justify-center p-1.5 text-gray-400 hover:text-gray-500"
           >
             <span className="sr-only">Next month</span>
-            <ChevronRightIcon className="w-5 h-5" aria-hidden="true" />
+            <RightIcon />
           </button>
         </div>
         <div className="grid w-full grid-cols-7 mt-10 text-xs leading-6 text-center text-gray-500 dark:text-white">
