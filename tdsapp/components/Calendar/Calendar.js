@@ -16,12 +16,14 @@ import Link from "next/link";
 import { useState } from "react";
 import { useStateContext } from "../../context/stateContext";
 import { LeftIcon, RightIcon } from "./Icons";
-
+import { useRouter } from "next/router";
+import { forceReloadUtil } from "../../utils/helper";
 function classNames(...classes) {
   return classes.filter(Boolean).join(" ");
 }
 
 export default function Calendar() {
+  const router = useRouter();
   let today = startOfToday();
   let [selectedDay, setSelectedDay] = useState(today);
   let [currentMonth, setCurrentMonth] = useState(format(today, "MMM-yyyy"));
@@ -42,18 +44,21 @@ export default function Calendar() {
   }
 
   const { setToggled } = useStateContext();
-  function handleChange(day) {
-    setSelectedDay(day), setToggled(false);
-  }
+  // function handleChange(day) {
+  //   console.log(day);
+  //   setSelectedDay(day);
+  //   // router.push(`/book/${getDayOfYear(day) + 1}`);
+  //   setToggled(false);
+  // }
   return (
     <motion.div
       initial={{ y: "-100%" }}
       animate={{ y: 0 }}
       exit={{ y: "-100%" }}
       transition={{ duration: 0.7, ease: "easeInOut" }}
-      className="fixed z-40 w-full max-w-[414px] px-4 h-screen overflow-autobg-gray-50 dark:bg-gray-900 bg-gray-100"
+      className="fixed z-40 w-screen h-screen px-4 overflow-auto bg-gray-100 sm:m-auto dark:bg-gray-900"
     >
-      <div className="mt-20 ">
+      <div className="max-w-sm m-auto mt-20">
         <div className="flex items-center w-full">
           <h2 className="flex-auto font-semibold text-gray-900 dark:text-white">
             {format(firstDayCurrentMonth, "MMMM yyyy")}
@@ -93,38 +98,49 @@ export default function Calendar() {
                 "py-1.5"
               )}
             >
-              <Link href={`/book/${getDayOfYear(day) + 1}`}>
-                <button
-                  type="button"
-                  onClick={handleChange}
-                  className={classNames(
-                    isEqual(day, selectedDay) &&
-                      "text-white  dark:text-gray-500 ",
-                    !isEqual(day, selectedDay) &&
-                      isToday(day) &&
-                      "text-green-500",
-                    !isEqual(day, selectedDay) &&
-                      !isToday(day) &&
-                      isSameMonth(day, firstDayCurrentMonth) &&
-                      "text-gray-900 dark:bg-gray-700 bg-gray-200 dark:text-white ",
-                    !isEqual(day, selectedDay) &&
-                      !isToday(day) &&
-                      !isSameMonth(day, firstDayCurrentMonth) &&
-                      "text-gray-400",
-                    isEqual(day, selectedDay) &&
-                      isToday(day) &&
-                      "bg-green-500 text-white",
-                    isEqual(day, selectedDay) && !isToday(day) && "bg-gray-900",
-                    !isEqual(day, selectedDay) && "hover:bg-gray-200",
-                    (isEqual(day, selectedDay) || isToday(day)) &&
-                      "font-semibold",
-                    "mx-auto flex h-8 w-8 items-center justify-center rounded-sm"
-                  )}
-                >
-                  <time dateTime={format(day, "yyyy-MM-dd")}>
-                    {format(day, "d")}
-                  </time>
-                </button>
+              <Link href={`/book/${getDayOfYear(day) + 1}`} prefetch={true}>
+                <a>
+                  <button
+                    type="button"
+                    onClick={() => {
+                      setSelectedDay(day);
+                      // router.push(`/book/${getDayOfYear(day) + 1}`);
+                      // setTimeout(() => {
+                      //   forceReloadUtil();
+                      // }, 10000);
+                      setToggled(false);
+                    }}
+                    className={classNames(
+                      isEqual(day, selectedDay) &&
+                        "text-white  dark:text-gray-500 ",
+                      !isEqual(day, selectedDay) &&
+                        isToday(day) &&
+                        "text-green-500",
+                      !isEqual(day, selectedDay) &&
+                        !isToday(day) &&
+                        isSameMonth(day, firstDayCurrentMonth) &&
+                        "text-gray-900 dark:bg-gray-700 bg-gray-200 dark:text-white ",
+                      !isEqual(day, selectedDay) &&
+                        !isToday(day) &&
+                        !isSameMonth(day, firstDayCurrentMonth) &&
+                        "text-gray-400",
+                      isEqual(day, selectedDay) &&
+                        isToday(day) &&
+                        "bg-green-500 text-white",
+                      isEqual(day, selectedDay) &&
+                        !isToday(day) &&
+                        "bg-gray-900",
+                      !isEqual(day, selectedDay) && "hover:bg-gray-200",
+                      (isEqual(day, selectedDay) || isToday(day)) &&
+                        "font-semibold",
+                      "mx-auto flex h-8 w-8 items-center justify-center rounded-sm"
+                    )}
+                  >
+                    <time dateTime={format(day, "yyyy-MM-dd")}>
+                      {format(day, "d")}
+                    </time>
+                  </button>
+                </a>
               </Link>
             </div>
           ))}

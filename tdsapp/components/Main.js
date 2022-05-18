@@ -7,7 +7,7 @@ const Main = ({ children }) => {
       animate={{ opacity: 1, y: 0 }}
       exit={{ y: "100%" }}
       transition={{ type: "spring", mass: 0.1 }}
-      className="flex flex-col justify-center"
+      className="flex flex-col justify-center max-w-4xl m-auto"
     >
       {children}
     </motion.main>

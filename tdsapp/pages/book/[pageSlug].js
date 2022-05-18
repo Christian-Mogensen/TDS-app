@@ -41,16 +41,14 @@ export default function page({ currentPage }) {
     require("../../assets/img/220px-Epicteti_Enchiridion_Latinis_versibus_adumbratum_(Oxford_1715)_frontispiece.jpg"),
   ];
   const rng = Math.floor(Math.random() * (pageImg.length - 1));
-  const [pageData, setPageData] = useState(currentPage);
-
-  const pageDate = `${pageData.date.day} ${pageData.date.month}`;
-  const pageTitle = pageData.title;
+  const pageDate = `${currentPage.date.day} ${currentPage.date.month}`;
+  const pageTitle = currentPage.title;
   const pagePhiloPic = pageImg[rng];
-  const pagePhiloSrc = pageData.philosopher;
-  const pageFilosof = pageData.philosopher;
-  const pageQuote = pageData.quote;
-  const pageRef = pageData.reference;
-  const pageSynopsis = pageData.synopsis;
+  const pagePhiloSrc = currentPage.philosopher;
+  const pageFilosof = currentPage.philosopher;
+  const pageQuote = currentPage.quote;
+  const pageRef = currentPage.reference;
+  const pageSynopsis = currentPage.synopsis;
 
   const { toggled } = useStateContext();
   return (
