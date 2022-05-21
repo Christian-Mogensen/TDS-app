@@ -15,9 +15,10 @@ import { motion } from "framer-motion";
 import Link from "next/link";
 import { useState } from "react";
 import { useStateContext } from "../../context/stateContext";
-import { LeftIcon, RightIcon } from "./Icons";
+import { CheckMark, LeftIcon, RightIcon } from "./Icons";
 import { useRouter } from "next/router";
 import { forceReloadUtil } from "../../utils/helper";
+import BookmarkIcon from "../BookmarkIcon";
 function classNames(...classes) {
   return classes.filter(Boolean).join(" ");
 }
@@ -56,9 +57,9 @@ export default function Calendar() {
       animate={{ y: 0 }}
       exit={{ y: "-100%" }}
       transition={{ duration: 0.7, ease: "easeInOut" }}
-      className="fixed z-40 w-screen h-screen px-4 overflow-auto bg-gray-100 sm:m-auto dark:bg-gray-900"
+      className="fixed z-40 w-full h-screen max-w-sm px-4 overflow-auto bg-gray-100 dark:bg-gray-900 md:max-w-full sm:mx-auto "
     >
-      <div className="max-w-sm m-auto mt-20">
+      <div className="max-w-2xl m-auto mt-20 sm:p-4">
         <div className="flex items-center w-full">
           <h2 className="flex-auto font-semibold text-gray-900 dark:text-white">
             {format(firstDayCurrentMonth, "MMMM yyyy")}
@@ -80,7 +81,7 @@ export default function Calendar() {
             <RightIcon />
           </button>
         </div>
-        <div className="grid w-full grid-cols-7 mt-10 text-xs leading-6 text-center text-gray-500 dark:text-white">
+        <div className="grid w-full grid-cols-7 mt-10 text-xs leading-6 text-center text-gray-500 sm:text-2xl dark:text-white">
           <div>S</div>
           <div>M</div>
           <div>T</div>
@@ -112,7 +113,7 @@ export default function Calendar() {
                     }}
                     className={classNames(
                       isEqual(day, selectedDay) &&
-                        "text-white  dark:text-gray-500 ",
+                        "text-white  dark:text-gray-200 ",
                       !isEqual(day, selectedDay) &&
                         isToday(day) &&
                         "text-green-500",
@@ -133,12 +134,25 @@ export default function Calendar() {
                       !isEqual(day, selectedDay) && "hover:bg-gray-200",
                       (isEqual(day, selectedDay) || isToday(day)) &&
                         "font-semibold",
-                      "mx-auto flex h-8 w-8 items-center justify-center rounded-sm"
+                      "mx-auto text-xs sm:text-2xl relative flex h-8 w-8 sm:h-20 sm:w-20  items-center justify-center rounded-sm"
                     )}
                   >
                     <time dateTime={format(day, "yyyy-MM-dd")}>
                       {format(day, "d")}
                     </time>
+                    {/* <div className=""> */}
+                    <CheckMark
+                      className={
+                        "absolute w-2 h-2 bottom-[2px] right-[2px] sm:w-6 sm:h-6"
+                      }
+                    />
+                    <BookmarkIcon
+                      fill="currentColor"
+                      className={
+                        "absolute w-1 h-1 top-[2px] right-[2px] sm:w-6 sm:h-6"
+                      }
+                    />
+                    {/* </div> */}
                   </button>
                 </a>
               </Link>

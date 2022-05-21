@@ -53,7 +53,7 @@ const Header = () => {
       animate={hidden ? "hidden" : "visible"}
       transition={{ duration: 0.125 }}
     >
-      <div className="flex items-center justify-between">
+      <div className="flex items-center justify-between max-w-2xl m-auto">
         <h1 className="p-3 text-3xl capitalize dark:text-white dark:border-gray-50">
           <motion.span
             variants={textparent}
