@@ -9,6 +9,7 @@ export default function Home({ theme, root }) {
   return (
     <>
       <Header />
+
       <AnimatePresence>{toggled && <Calendar />}</AnimatePresence>
       <AnimatePresence>{!toggled && <LandingPage />}</AnimatePresence>
     </>
