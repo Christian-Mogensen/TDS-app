@@ -1,8 +1,8 @@
 import React, { useRef } from "react";
-import { useUserContext } from "../context/userContext";
-import ButtonSubmit from "./ButtonSubmit";
-import InputCompField from "./InputCompField";
-import Inputfield from "./Inputfield";
+import { useUserContext } from "../../../context/userContext";
+import ButtonSubmit from "../../Icons/ButtonSubmit";
+import InputCompField from "../InputRelated/InputCompField";
+import Inputfield from "../InputRelated/Inputfield";
 
 const Signup = () => {
   const emailRef = useRef(null);
@@ -23,7 +23,7 @@ const Signup = () => {
 
   return (
     <div className="mx-3 rounded ">
-      <h2 className="capitalize text-3xl mb-3 text-center text-current">
+      <h2 className="mb-3 text-3xl text-center text-current capitalize">
         New user
       </h2>
       <form className="flex flex-col gap-3 py-3" onSubmit={onSubmit}>

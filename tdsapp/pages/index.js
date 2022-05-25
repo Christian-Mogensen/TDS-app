@@ -1,6 +1,6 @@
 import { AnimatePresence } from "framer-motion";
 import Calendar from "../components/Calendar/Calendar";
-import Header from "../components/Header";
+import Header from "../components/EveryPageComp/Header";
 import { useStateContext } from "../context/stateContext";
 import LandingPage from "./landingpage";
 

@@ -1,12 +1,12 @@
 import Link from "next/link";
 import React from "react";
-import { useUserContext } from "../context/userContext";
-import IconButton from "./IconButton";
+import { useUserContext } from "../../context/userContext";
+import IconButton from "../IconRel/IconButton";
 const LoginBar = ({ status, state }) => {
   const { user, logoutUser } = useUserContext();
   // console.log(user);
   return (
-    <aside className="relative z-50 flex items-center justify-between h-12 capitalize bg-gray-300 border-t  dark:text-white dark:bg-gray-600 dark:border-gray-700 font-secondary">
+    <aside className="relative z-50 flex items-center justify-between h-12 capitalize bg-gray-300 border-t dark:text-white dark:bg-gray-600 dark:border-gray-700 font-secondary">
       <div className="flex mx-3">
         <div className="flex items-center justify-center w-6 h-6 mr-2 overflow-hidden border-2 border-current rounded-full ">
           <svg

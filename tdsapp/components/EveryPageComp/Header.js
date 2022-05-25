@@ -1,10 +1,12 @@
 import { motion, useViewportScroll } from "framer-motion";
+import Link from "next/link";
 import React, { useState, useEffect } from "react";
-import { useStateContext } from "../context/stateContext";
-import CalendarIcon from "./CalendarIcon";
-import UseSwitchesCustom from "./CustomSwitch";
-import IconButton from "./IconButton";
-import ProgressBar from "./ProgressBar";
+import { useStateContext } from "../../context/stateContext";
+import { useUserContext } from "../../context/userContext";
+import CalendarIcon from "../Icons/CalendarIcon";
+import UseSwitchesCustom from "../Icons/CustomSwitch";
+import IconButton from "../IconRel/IconButton";
+import ProgressBar from "../SpecialComp/ProgressBar";
 const Header = () => {
   const textparent = {
     visible: {
@@ -44,6 +46,7 @@ const Header = () => {
   const { toggled, setToggled } = useStateContext();
   const [hidden, setHidden] = useState(false);
   const { scrollY } = useViewportScroll();
+  const { user, logoutUser } = useUserContext();
 
   return (
     <motion.header
@@ -77,6 +80,33 @@ const Header = () => {
             <CalendarIcon />
           </IconButton>
           <UseSwitchesCustom />
+          {user ? (
+            <IconButton onClick={logoutUser} aria-label="logout button">
+              <svg
+                xmlns="http://www.w3.org/2000/svg"
+                className="w-4 h-4"
+                viewBox="0 0 20 20"
+                fill="currentColor"
+              >
+                <path d="M10 2a5 5 0 00-5 5v2a2 2 0 00-2 2v5a2 2 0 002 2h10a2 2 0 002-2v-5a2 2 0 00-2-2H7V7a3 3 0 015.905-.75 1 1 0 001.937-.5A5.002 5.002 0 0010 2z" />
+              </svg>
+            </IconButton>
+          ) : (
+            <Link href="/signuptutorial">
+              <a>
+                <IconButton aria-label="signin button">
+                  <svg
+                    xmlns="http://www.w3.org/2000/svg"
+                    className="w-4 h-4"
+                    viewBox="0 0 20 20"
+                    fill="currentColor"
+                  >
+                    <path d="M10 2a5 5 0 00-5 5v2a2 2 0 00-2 2v5a2 2 0 002 2h10a2 2 0 002-2v-5a2 2 0 00-2-2H7V7a3 3 0 015.905-.75 1 1 0 001.937-.5A5.002 5.002 0 0010 2z" />
+                  </svg>
+                </IconButton>
+              </a>
+            </Link>
+          )}
         </motion.div>
       </div>
 

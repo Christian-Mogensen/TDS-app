@@ -3,12 +3,12 @@ import { AnimatePresence } from "framer-motion";
 import Head from "next/head";
 import { useState } from "react";
 import Calendar from "../../components/Calendar/Calendar";
-import Header from "../../components/Header";
-import ImageComponent from "../../components/ImageComponent";
-import Main from "../../components/Main";
-import MainHeader from "../../components/MainHeader";
-import Quote from "../../components/Quote";
-import Synopsis from "../../components/Synopsis";
+import Header from "../../components/EveryPageComp/Header";
+import ImageComponent from "../../components/PageElement/ImageComponent";
+import Main from "../../components/EveryPageComp/Main";
+import MainHeader from "../../components/PageElement/MainHeader";
+import Quote from "../../components/PageElement/Quote";
+import Synopsis from "../../components/PageElement/Synopsis";
 import { useStateContext } from "../../context/stateContext";
 import db from "../../firebase/firebase";
 

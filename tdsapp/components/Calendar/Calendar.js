@@ -13,12 +13,11 @@ import {
 } from "date-fns";
 import { motion } from "framer-motion";
 import Link from "next/link";
+import { useRouter } from "next/router";
 import { useState } from "react";
 import { useStateContext } from "../../context/stateContext";
+import BookmarkIcon from "../Icons/BookmarkIcon";
 import { CheckMark, LeftIcon, RightIcon } from "./Icons";
-import { useRouter } from "next/router";
-import { forceReloadUtil } from "../../utils/helper";
-import BookmarkIcon from "../BookmarkIcon";
 function classNames(...classes) {
   return classes.filter(Boolean).join(" ");
 }
@@ -45,18 +44,13 @@ export default function Calendar() {
   }
 
   const { setToggled } = useStateContext();
-  // function handleChange(day) {
-  //   console.log(day);
-  //   setSelectedDay(day);
-  //   // router.push(`/book/${getDayOfYear(day) + 1}`);
-  //   setToggled(false);
-  // }
+
   return (
     <motion.div
-      initial={{ y: "-100%" }}
+      initial={{ y: "100%" }}
       animate={{ y: 0 }}
-      exit={{ y: "-100%" }}
-      transition={{ duration: 0.7, ease: "easeInOut" }}
+      exit={{ y: "100%" }}
+      transition={{ duration: 0.3, ease: "easeInOut" }}
       className="fixed z-40 w-full h-screen max-w-sm px-4 overflow-auto bg-gray-100 dark:bg-gray-900 md:max-w-full sm:mx-auto "
     >
       <div className="max-w-2xl m-auto mt-20 sm:p-4">
@@ -105,10 +99,6 @@ export default function Calendar() {
                     type="button"
                     onClick={() => {
                       setSelectedDay(day);
-                      // router.push(`/book/${getDayOfYear(day) + 1}`);
-                      // setTimeout(() => {
-                      //   forceReloadUtil();
-                      // }, 10000);
                       setToggled(false);
                     }}
                     className={classNames(
@@ -134,25 +124,24 @@ export default function Calendar() {
                       !isEqual(day, selectedDay) && "hover:bg-gray-200",
                       (isEqual(day, selectedDay) || isToday(day)) &&
                         "font-semibold",
-                      "mx-auto text-xs sm:text-2xl relative flex h-8 w-8 sm:h-20 sm:w-20  items-center justify-center rounded-sm"
+                      "mx-auto text-xs sm:text-xl relative flex h-8 w-8 sm:h-16 sm:w-16  items-center justify-center rounded-sm"
                     )}
                   >
                     <time dateTime={format(day, "yyyy-MM-dd")}>
                       {format(day, "d")}
                     </time>
-                    {/* <div className=""> */}
+
                     <CheckMark
                       className={
-                        "absolute w-2 h-2 bottom-[2px] right-[2px] sm:w-6 sm:h-6"
+                        "absolute w-2 h-2 bottom-[2px] right-[2px] sm:w-3 sm:h-3"
                       }
                     />
                     <BookmarkIcon
                       fill="currentColor"
                       className={
-                        "absolute w-1 h-1 top-[2px] right-[2px] sm:w-6 sm:h-6"
+                        "absolute w-1 h-1 top-[2px] right-[2px] sm:w-3 sm:h-3"
                       }
                     />
-                    {/* </div> */}
                   </button>
                 </a>
               </Link>

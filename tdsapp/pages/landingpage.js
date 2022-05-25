@@ -1,16 +1,8 @@
-import Wrapper from "../components/Wrapper";
-import Header from "../components/Header";
-import Main from "../components/Main";
+import { format, getDate, getDayOfYear, isLeapYear } from "date-fns";
+import { motion } from "framer-motion";
 import Image from "next/image";
-import Footer from "../components/Footer";
 import Link from "next/link";
-import { useEffect } from "react";
-import { getDate, format, getDayOfYear, isLeapYear } from "date-fns";
-import { motion, AnimatePresence } from "framer-motion";
-import LoginBar from "../components/LoginBar";
-import { ThemeProvider } from "../context/ThemeToggle";
-import Calendar from "../components/Calendar/Calendar";
-import { useStateContext } from "../context/stateContext";
+import Main from "../components/EveryPageComp/Main";
 
 export default function LandingPage({ theme, root }) {
   const pageImg = [

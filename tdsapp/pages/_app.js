@@ -1,6 +1,6 @@
 import { useState } from "react";
-import Footer from "../components/Footer";
-import Wrapper from "../components/Wrapper";
+import Footer from "../components/EveryPageComp/Footer";
+import Wrapper from "../components/EveryPageComp/Wrapper";
 import { StateContextProvider } from "../context/stateContext";
 import { ThemeProvider } from "../context/ThemeToggle";
 import { UserContextProvider } from "../context/userContext";
