@@ -1,10 +1,8 @@
-import React, { useState, useRef } from "react";
 import { motion } from "framer-motion";
-
-import SigninComponent from "../Signin/SigninComponent";
-import SignupComponent from "./SignupComponent";
-import FormXtraBtn from "./FormXtraBtn";
+import { useRef, useState } from "react";
 import AtnBtn from "../AtnBtn";
+import SigninComponent from "../Signin/SigninComponent";
+import SignupComponent from "../Signup/SignupComponent";
 
 const Form = ({ isOpen }) => {
   const emailRef = useRef();
