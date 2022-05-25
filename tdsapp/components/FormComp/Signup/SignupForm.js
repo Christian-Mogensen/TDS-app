@@ -1,7 +1,7 @@
 import React from "react";
 import { motion } from "framer-motion";
-import Form from "./Form";
-import CloseIcon from "../CloseIcon";
+import Form from "../FormRelated/Form";
+import CloseIcon from "../../Icons/CloseIcon";
 const SignupForm = ({ isOpen, toggleModal }) => {
   const variants = {
     open: { y: 0 },
@@ -18,8 +18,7 @@ const SignupForm = ({ isOpen, toggleModal }) => {
       className={`flex flex-col justify-center bg-gradient-to-b from-gray-400 to-transparent items-center fixed z-50  h-full w-full`}
     >
       <div className="relative">
-        <button onClick={toggleModal} className="specialbuttonstyle"
-        >
+        <button onClick={toggleModal} className="specialbuttonstyle">
           <CloseIcon />
         </button>
 

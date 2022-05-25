@@ -1,14 +1,14 @@
 import React, { useRef } from "react";
 
 import { motion } from "framer-motion";
-import { useUserContext } from "../../context/userContext";
-import ButtonSubmit from "../ButtonSubmit";
+import { useUserContext } from "../../../context/userContext";
+import ButtonSubmit from "../../Icons/ButtonSubmit";
 import GoogleIcon from "@mui/icons-material/Google";
 import GitHubIcon from "@mui/icons-material/GitHub";
-import FormHeader from "./FormHeader";
-import FormBtn from "./FormBtn";
-import AtnBtn from "./AtnBtn";
-import FormInputGrp from "./FormInputGrp";
+import FormHeader from "../FormRelated/FormHeader";
+import FormBtn from "../FormRelated/FormBtn";
+import AtnBtn from "../AtnBtn";
+import FormInputGrp from "../FormRelated/FormInputGrp";
 
 const SigninComponent = ({ isOpen }) => {
   const emailRef = useRef();

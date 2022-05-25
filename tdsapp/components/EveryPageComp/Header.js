@@ -1,10 +1,12 @@
 import { motion, useViewportScroll } from "framer-motion";
-import UseSwitchesCustom from "./CustomSwitch";
-import CalendarIcon from "./CalendarIcon";
-import IconButton from "./IconButton";
+import Link from "next/link";
 import React, { useState, useEffect } from "react";
-import ProgressBar from "./ProgressBar";
-
+import { useStateContext } from "../../context/stateContext";
+import { useUserContext } from "../../context/userContext";
+import CalendarIcon from "../Icons/CalendarIcon";
+import UseSwitchesCustom from "../Icons/CustomSwitch";
+import IconButton from "../IconRel/IconButton";
+import ProgressBar from "../SpecialComp/ProgressBar";
 const Header = () => {
   const textparent = {
     visible: {
@@ -27,13 +29,11 @@ const Header = () => {
     },
     hidden: { opacity: 0, x: -50 },
   };
-  React.useEffect(() => {
+  useEffect(() => {
     return scrollY.onChange(() => update());
   });
   const onScrollHide = {
-    /** this is the "visible" key and it's correlating styles **/
     visible: { opacity: 1, y: 0 },
-    /** this is the "hidden" key and it's correlating styles **/
     hidden: { opacity: 1, y: -57 },
   };
   function update() {
@@ -43,8 +43,10 @@ const Header = () => {
       setHidden(true);
     }
   }
-  const [hidden, setHidden] = React.useState(false);
+  const { toggled, setToggled } = useStateContext();
+  const [hidden, setHidden] = useState(false);
   const { scrollY } = useViewportScroll();
+  const { user, logoutUser } = useUserContext();
 
   return (
     <motion.header
@@ -54,8 +56,8 @@ const Header = () => {
       animate={hidden ? "hidden" : "visible"}
       transition={{ duration: 0.125 }}
     >
-      <div className="flex justify-between items-center">
-        <h1 className="p-3  capitalize text-3xl dark:text-white dark:border-gray-50">
+      <div className="flex items-center justify-between max-w-2xl m-auto">
+        <h1 className="p-3 text-3xl capitalize dark:text-white dark:border-gray-50">
           <motion.span
             variants={textparent}
             transition={{ delay: 1 }}
@@ -74,10 +76,37 @@ const Header = () => {
           transition={{ delay: 0.8 }}
           className="flex gap-4 pr-3"
         >
-          <IconButton>
+          <IconButton onClick={() => setToggled(!toggled)}>
             <CalendarIcon />
           </IconButton>
           <UseSwitchesCustom />
+          {user ? (
+            <IconButton onClick={logoutUser} aria-label="logout button">
+              <svg
+                xmlns="http://www.w3.org/2000/svg"
+                className="w-4 h-4"
+                viewBox="0 0 20 20"
+                fill="currentColor"
+              >
+                <path d="M10 2a5 5 0 00-5 5v2a2 2 0 00-2 2v5a2 2 0 002 2h10a2 2 0 002-2v-5a2 2 0 00-2-2H7V7a3 3 0 015.905-.75 1 1 0 001.937-.5A5.002 5.002 0 0010 2z" />
+              </svg>
+            </IconButton>
+          ) : (
+            <Link href="/signuptutorial">
+              <a>
+                <IconButton aria-label="signin button">
+                  <svg
+                    xmlns="http://www.w3.org/2000/svg"
+                    className="w-4 h-4"
+                    viewBox="0 0 20 20"
+                    fill="currentColor"
+                  >
+                    <path d="M10 2a5 5 0 00-5 5v2a2 2 0 00-2 2v5a2 2 0 002 2h10a2 2 0 002-2v-5a2 2 0 00-2-2H7V7a3 3 0 015.905-.75 1 1 0 001.937-.5A5.002 5.002 0 0010 2z" />
+                  </svg>
+                </IconButton>
+              </a>
+            </Link>
+          )}
         </motion.div>
       </div>
 

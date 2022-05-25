@@ -1,6 +1,6 @@
 import { useState } from "react";
 import { motion, AnimatePresence } from "framer-motion";
-import SignupForm from "../components/form/SignupForm";
+import SignupForm from "../components/FormComp/Signup/SignupForm";
 import LoginIcon from "@mui/icons-material/Login";
 import LogoutIcon from "@mui/icons-material/Logout";
 export default function Test() {

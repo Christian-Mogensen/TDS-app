@@ -1,12 +1,10 @@
-import React, { useState, useRef } from "react";
 import { motion } from "framer-motion";
+import { useRef, useState } from "react";
+import AtnBtn from "../AtnBtn";
+import SigninComponent from "../Signin/SigninComponent";
+import SignupComponent from "../Signup/SignupComponent";
 
-import SigninComponent from "./SigninComponent";
-import SignupComponent from "./SignupComponent";
-import FormXtraBtn from "../FormXtraBtn";
-import AtnBtn from "./AtnBtn";
-
-const Form = ({isOpen}) => {
+const Form = ({ isOpen }) => {
   const emailRef = useRef();
   const psdRef = useRef();
   const [formState, setformState] = useState(false);
@@ -20,21 +18,25 @@ const Form = ({isOpen}) => {
     if (email && password) signInUser(email, password);
   };
   const formVariant = {
-    open: { y: 0,
-    transition:{
-      delay:0.5
-    } },
-    closed: { y: "0",
-  transition:{
-    delay:0
-  } },
-  }
+    open: {
+      y: 0,
+      transition: {
+        delay: 0.5,
+      },
+    },
+    closed: {
+      y: "0",
+      transition: {
+        delay: 0,
+      },
+    },
+  };
 
   return (
     <motion.form
-    variants={formVariant}
-    initial={{y:'0'}}
-    animate={isOpen ? "open" : "closed"}
+      variants={formVariant}
+      initial={{ y: "0" }}
+      animate={isOpen ? "open" : "closed"}
       className="overflow-hidden relative flex flex-col gap-3 bg-gray-100 shadow-md p-3 rounded min-w-[320px]"
       onSubmit={onSubmit}
     >

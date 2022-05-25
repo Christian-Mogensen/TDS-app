@@ -1,8 +1,8 @@
 import React, { useRef } from "react";
-import { useUserContext } from "../../context/userContext";
-import ButtonSubmit from "../ButtonSubmit";
-import FormInputGrp from "./FormInputGrp";
-import FormHeader from "./FormHeader";
+import { useUserContext } from "../../../context/userContext";
+import ButtonSubmit from "../../Icons/ButtonSubmit";
+import FormInputGrp from "../FormRelated/FormInputGrp";
+import FormHeader from "../FormRelated/FormHeader";
 
 const SignupComponent = () => {
   const emailRef = useRef(null);

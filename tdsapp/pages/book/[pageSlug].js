@@ -1,25 +1,15 @@
-import { isLeapYear, format } from "date-fns";
-import { onSnapshot } from "firebase/firestore";
-import { useState, useEffect } from "react";
+import { collection, doc, getDoc, getDocs } from "firebase/firestore";
+import { AnimatePresence } from "framer-motion";
+import Head from "next/head";
+import Calendar from "../../components/Calendar/Calendar";
+import Header from "../../components/EveryPageComp/Header";
+import Main from "../../components/EveryPageComp/Main";
+import ImageComponent from "../../components/PageElement/ImageComponent";
+import MainHeader from "../../components/PageElement/MainHeader";
+import Quote from "../../components/PageElement/Quote";
+import Synopsis from "../../components/PageElement/Synopsis";
+import { useStateContext } from "../../context/stateContext";
 import db from "../../firebase/firebase";
-import { collection, getDocs, getDoc, doc } from "firebase/firestore";
-import Link from "next/link";
-
-import ProgressBar from "react-scroll-progress-bar";
-
-import Header from "../../components/Header";
-import SubSlugNav from "../../components/SubSlugNav";
-import Main from "../../components/Main";
-import Footer from "../../components/Footer";
-import ImageComponent from "../../components/ImageComponent";
-import Quote from "../../components/Quote";
-import Synopsis from "../../components/Synopsis";
-import MainHeader from "../../components/MainHeader";
-import IconWrapper from "../../components/IconWrapper";
-import Wrapper from "../../components/Wrapper";
-import { motion } from "framer-motion";
-
-import BookmarkIcon from "../../components/BookmarkIcon";
 
 export const getStaticProps = async ({ params }) => {
   const currentPage = doc(db, `book/${params?.pageSlug}`);
@@ -49,10 +39,9 @@ export default function page({ currentPage }) {
     require("../../assets/img/Screen-Shot-2020-03-02-at-1.05.47-PM.webp"),
     require("../../assets/img/220px-Epicteti_Enchiridion_Latinis_versibus_adumbratum_(Oxford_1715)_frontispiece.jpg"),
   ];
-  const monthDate = format(new Date(), "MMMM");
   const rng = Math.floor(Math.random() * (pageImg.length - 1));
+  const pageDate = `${currentPage.date.day} ${currentPage.date.month}`;
   const pageTitle = currentPage.title;
-  const pageDay = `${currentPage.date.day} ${monthDate}`;
   const pagePhiloPic = pageImg[rng];
   const pagePhiloSrc = currentPage.philosopher;
   const pageFilosof = currentPage.philosopher;
@@ -60,26 +49,32 @@ export default function page({ currentPage }) {
   const pageRef = currentPage.reference;
   const pageSynopsis = currentPage.synopsis;
 
-
-
+  const { toggled } = useStateContext();
   return (
-    <Wrapper>
-      <Header />
-      <SubSlugNav />
-
-      <Main>
-
-        <MainHeader title={pageTitle} date={pageDay} />
-        <ImageComponent
-          source={pagePhiloPic}
-          alt={pagePhiloSrc}
-          filosof={pageFilosof}
+    <>
+      <Head>
+        <meta
+          name="description"
+          content={`The daily Stoic, ${pageFilosof}, ${pageQuote[0]}...`}
         />
-        <Quote quote={pageQuote} refer={pageRef} />
-        <Synopsis para={pageSynopsis} />
-        <IconWrapper />
-      </Main>
-      <Footer />
-    </Wrapper>
+        <title>{pageTitle}</title>
+      </Head>
+      <Header />
+      <AnimatePresence>{toggled && <Calendar />}</AnimatePresence>
+      <AnimatePresence>
+        {!toggled && (
+          <Main>
+            <MainHeader title={pageTitle} date={pageDate} />
+            <ImageComponent
+              source={pagePhiloPic}
+              alt={pagePhiloSrc}
+              filosof={pageFilosof}
+            />
+            <Quote quote={pageQuote} refer={pageRef} />
+            <Synopsis para={pageSynopsis} />
+          </Main>
+        )}
+      </AnimatePresence>
+    </>
   );
 }

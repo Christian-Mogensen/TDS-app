@@ -1,11 +1,8 @@
-import Wrapper from "../components/Wrapper";
-import Header from "../components/Header";
-import Main from "../components/Main";
-import Image from "next/image";
-import Footer from "../components/Footer";
-import Link from "next/link";
-import { getDate, format, getDayOfYear, isLeapYear } from "date-fns";
+import { format, getDate, getDayOfYear, isLeapYear } from "date-fns";
 import { motion } from "framer-motion";
+import Image from "next/image";
+import Link from "next/link";
+import Main from "../components/EveryPageComp/Main";
 
 export default function Home({ theme }) {
   const pageImg = [
@@ -26,14 +23,13 @@ export default function Home({ theme }) {
   const pageday = gdy > 120 && sly == true ? gdy + 1 : gdy;
 
   return (
-    <Wrapper>
-      <Header />
-      <aside className="h-12 dark:bg-gray-900 border-t dark:border-gray-700 flex items-center justify-between font-secondary capitalize border-b">
-        <div className="mx-3 flex">
-          <div className=" w-6 h-6 rounded-full flex justify-center items-center border-2 border-current overflow-hidden mr-2">
+    <>
+      <aside className="flex items-center justify-between h-12 capitalize border-t border-b dark:bg-gray-900 dark:border-gray-700 font-secondary">
+        <div className="flex mx-3">
+          <div className="flex items-center justify-center w-6 h-6 mr-2 overflow-hidden border-2 border-current rounded-full ">
             <svg
               xmlns="http://www.w3.org/2000/svg"
-              className="h-6 w-6 top-1 relative"
+              className="relative w-6 h-6 top-1"
               viewBox="0 0 20 20"
               fill="currentColor"
             >
@@ -46,31 +42,31 @@ export default function Home({ theme }) {
           </div>{" "}
           guest
         </div>
-        <button className="mx-3 w-24 bg-gray-200 text-current dark:bg-gray-900 border border-gray-50  rounded text-white">
+        <button className="w-24 mx-3 text-current text-white bg-gray-200 border rounded dark:bg-gray-900 border-gray-50">
           login
         </button>
       </aside>
       <Main>
-        <h1 className="text-3xl capitalize mx-3 py-3 font-secondary">
+        <h1 className="py-3 mx-3 text-3xl capitalize font-secondary">
           welcome stoic
         </h1>
-        <p className="font-secondary mx-3 text-xl border-t border-current inline pt-1">
+        <p className="inline pt-1 mx-3 text-xl border-t border-current font-secondary">
           Today is the
         </p>
-        <div className="overflow-hidden mx-3 justify-center gap-3 py-2">
+        <div className="justify-center gap-3 py-2 mx-3 overflow-hidden">
           <Link href={`/book/${pageday}`}>
             <a>
               <motion.figure
                 initial={{ y: 300 }}
                 animate={{ y: 0 }}
                 transition={{ duration: 0.3, delay: 0.6 }}
-                className="grid-container border-white w-full m-auto  dark:border-gray-700 h-64 rounded-lg overflow-hidden shadow-sm shadow-current relative"
+                className="relative w-full h-64 m-auto overflow-hidden border-white rounded-lg shadow-sm grid-container dark:border-gray-700 shadow-current"
               >
                 <motion.div
                   initial={{ opacity: 0, scale: 3, zIndex: 1 }}
                   animate={{ opacity: 1, scale: 1 }}
                   transition={{ duration: 1, delay: 0.6 }}
-                  className="image-content-2 flex"
+                  className="flex image-content-2"
                 >
                   <Image
                     className="object-cover img-obj"
@@ -81,14 +77,14 @@ export default function Home({ theme }) {
                   />
                 </motion.div>
 
-                <figcaption className="z-10 text-white font-primary leading-none transition-all image-text w-full text-right bg-gradient-to-t h-4/5 from-gray-700 to-transparent flex flex-col justify-end">
+                <figcaption className="z-10 flex flex-col justify-end w-full leading-none text-right text-white transition-all font-primary image-text bg-gradient-to-t h-4/5 from-gray-700 to-transparent">
                   <p className="text-[7rem] mx-3 leading-none">{day}</p>
-                  <p className="text-2xl m-3 leading-none">{month}</p>
-                  <div className="border-t dark:border-current mx-3 flex justify-end py-3 font-secondary items-center gap-3 text-sm">
+                  <p className="m-3 text-2xl leading-none">{month}</p>
+                  <div className="flex items-center justify-end gap-3 py-3 mx-3 text-sm border-t dark:border-current font-secondary">
                     view more
                     <svg
                       xmlns="http://www.w3.org/2000/svg"
-                      className="h-10 w-10"
+                      className="w-10 h-10"
                       fill="none"
                       viewBox="0 0 24 24"
                       stroke="currentColor"
@@ -107,8 +103,6 @@ export default function Home({ theme }) {
           </Link>
         </div>
       </Main>
-
-      <Footer />
-    </Wrapper>
+    </>
   );
 }
