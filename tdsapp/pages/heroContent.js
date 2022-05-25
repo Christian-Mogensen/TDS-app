@@ -1,11 +1,8 @@
-import Wrapper from "../components/Wrapper";
-import Header from "../components/Header";
-import Main from "../components/Main";
-import Image from "next/image";
-import Footer from "../components/Footer";
-import Link from "next/link";
-import { getDate, format, getDayOfYear } from "date-fns";
+import { format, getDate, getDayOfYear } from "date-fns";
 import { motion } from "framer-motion";
+import Image from "next/image";
+import Link from "next/link";
+import Main from "../components/EveryPageComp/Main";
 
 export default function hero() {
   const pageImg = [

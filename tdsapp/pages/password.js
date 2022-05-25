@@ -1,21 +1,17 @@
-import Main from "../components/Main"
-import Wrapper from "../components/Wrapper"
-import Header from "../components/Header"
-import Footer from "../components/Footer"
-import FormInput from "../components/FormInput"
+import Main from "../components/EveryPageComp/Main";
+import Wrapper from "../components/EveryPageComp/Wrapper";
+import Header from "../components/EveryPageComp/Header";
+import Footer from "../components/EveryPageComp/Footer";
+import FormInput from "../components/FormComp/FormRelated/FormInput";
 
-
-
-export default function Password({pw}) {
-    return (
-        <Wrapper>
-            <Header />
-            <Main>
-            <FormInput attr={pw} />
-            </Main>
-            <Footer />
-        </Wrapper>
-    )
-
-
+export default function Password({ pw }) {
+  return (
+    <Wrapper>
+      <Header />
+      <Main>
+        <FormInput attr={pw} />
+      </Main>
+      <Footer />
+    </Wrapper>
+  );
 }
