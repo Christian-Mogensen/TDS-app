@@ -1,5 +1,5 @@
 import React from "react";
-import FormGrp from "../FormGrp";
+import FormGrp from "./FormGrp";
 import InputComponent from "../InputRelated/InputComponentTwo";
 import FormLabel from "./FormLabel";
 import { forwardRef } from "react";
