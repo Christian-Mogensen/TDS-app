@@ -18,10 +18,13 @@ export const useStateContext = () => useContext(StateContext);
 
 export const StateContextProvider = ({ children }) => {
   const [toggled, setToggled] = useState(false);
+  const [toggledForm, setToggledForm] = useState(false);
 
   const contextValue = {
     toggled,
+    toggledForm,
     setToggled,
+    setToggledForm,
   };
   return (
     <StateContext.Provider value={contextValue}>

@@ -7,6 +7,7 @@ import CalendarIcon from "../Icons/CalendarIcon";
 import UseSwitchesCustom from "../Icons/CustomSwitch";
 import IconButton from "../IconRel/IconButton";
 import ProgressBar from "../SpecialComp/ProgressBar";
+import { LockArm, LockIcon } from "../FormV2/LockIcon";
 const Header = () => {
   const textparent = {
     visible: {
@@ -43,7 +44,8 @@ const Header = () => {
       setHidden(true);
     }
   }
-  const { toggled, setToggled } = useStateContext();
+  const { toggled, setToggled, toggledForm, setToggledForm } =
+    useStateContext();
   const [hidden, setHidden] = useState(false);
   const { scrollY } = useViewportScroll();
   const { user, logoutUser } = useUserContext();
@@ -92,20 +94,26 @@ const Header = () => {
               </svg>
             </IconButton>
           ) : (
-            <Link href="/signuptutorial">
-              <a>
-                <IconButton aria-label="signin button">
-                  <svg
-                    xmlns="http://www.w3.org/2000/svg"
-                    className="w-4 h-4"
-                    viewBox="0 0 20 20"
-                    fill="currentColor"
-                  >
-                    <path d="M10 2a5 5 0 00-5 5v2a2 2 0 00-2 2v5a2 2 0 002 2h10a2 2 0 002-2v-5a2 2 0 00-2-2H7V7a3 3 0 015.905-.75 1 1 0 001.937-.5A5.002 5.002 0 0010 2z" />
-                  </svg>
-                </IconButton>
-              </a>
-            </Link>
+            <IconButton
+              onClick={() => setToggledForm(!toggledForm)}
+              aria-label="form menu icon"
+            >
+              <div className="relative">
+                <div className="w-4">
+                  <LockIcon />
+                </div>
+                <motion.div
+                  style={{
+                    transform: !toggledForm ? "scaleX(-1)" : "scaleX(1)",
+                  }}
+                  className={`absolute transition-all top-0 left-0 w-4 ${
+                    !toggledForm && "left-[-6px]"
+                  }`}
+                >
+                  <LockArm />
+                </motion.div>
+              </div>
+            </IconButton>
           )}
         </motion.div>
       </div>

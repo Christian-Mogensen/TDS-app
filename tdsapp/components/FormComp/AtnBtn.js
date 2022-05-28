@@ -1,14 +1,14 @@
-import React from 'react'
+import React from "react";
 
-const AtnBtn = ({onClick, altText}) => {
-    return (
-        <p
-        className="cursor-pointer py-1 rounded w-full text-center text-sm border-b border-r border-t border-white dark:border-gray-700 bg-gray-200 opacity-60 hover:opacity-100 dark:bg-gray-900 font-secondary transition-all"
-        onClick={onClick}
-      >
-        {altText}
-      </p>
-    )
-}
+const AtnBtn = ({ onClick, altText }) => {
+  return (
+    <p
+      className="w-full py-1 text-sm transition-all bg-gray-200 border-t border-b border-r border-white rounded cursor-pointer dark:border-gray-700 opacity-60 hover:opacity-100 dark:bg-gray-900 font-secondary"
+      onClick={onClick}
+    >
+      {altText}
+    </p>
+  );
+};
 
-export default AtnBtn
+export default AtnBtn;

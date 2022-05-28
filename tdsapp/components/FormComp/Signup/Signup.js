@@ -1,4 +1,4 @@
-import React, { useRef } from "react";
+import { useRef } from "react";
 import { useUserContext } from "../../../context/userContext";
 import ButtonSubmit from "../../Icons/ButtonSubmit";
 import InputCompField from "../InputRelated/InputCompField";
@@ -23,14 +23,12 @@ const Signup = () => {
 
   return (
     <div className="mx-3 rounded ">
-      <h2 className="mb-3 text-3xl text-center text-current capitalize">
-        New user
-      </h2>
+      <h2 className="mb-3 text-3xl text-current capitalize">New user</h2>
       <form className="flex flex-col gap-3 py-3" onSubmit={onSubmit}>
         <InputCompField type="email" placeholder="email" ref={emailRef} />
         <InputCompField type="name" placeholder="name" ref={nameRef} />
         <InputCompField type="password" placeholder="password" ref={psdRef} />
-        <ButtonSubmit>Sign up</ButtonSubmit>
+        <ButtonSubmit textVal="Sign up" />
       </form>
     </div>
   );
