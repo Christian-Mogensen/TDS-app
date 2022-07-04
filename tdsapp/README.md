@@ -1,29 +1,15 @@
-# Next.js + Tailwind CSS Example
+# About this Project
 
-This example shows how to use [Tailwind CSS](https://tailwindcss.com/) [(v2.2)](https://blog.tailwindcss.com/tailwindcss-2-2) with Next.js. It follows the steps outlined in the official [Tailwind docs](https://tailwindcss.com/docs/guides/nextjs).
+This project was the first attempt on working with nextjs, tailwindcss, node, firebase and framer-motion.
 
-It uses the new [`Just-in-Time Mode`](https://tailwindcss.com/docs/just-in-time-mode) for Tailwind CSS.
+## What is it?
 
-## Preview
+Its a digitatise version of the book: "The Daily Stoic". A book where you read one page a day, with a filosophical topic.
 
-Preview the example live on [StackBlitz](http://stackblitz.com/):
+## What challenges where there for you?
 
-[![Open in StackBlitz](https://developer.stackblitz.com/img/open_in_stackblitz.svg)](https://stackblitz.com/github/vercel/next.js/tree/canary/examples/with-tailwindcss)
+- The entire book is converted into a collection of pages. Where each page is a document. That was a daunting task that took 14 hours. But now there is a entire "book" in the shape of a database collection on Firebase. I learned how to structure a database and data, so that it makes sence when working with the data.
 
-## Deploy your own
+- A way to automaticly send a daily email notificator, that automaticly generated a link to the daily page to be read. This was my first time working with node and how to style emails. On top of that, i had to learn how to run a cronjob and made a "clever" hack to vercel using github actions.
 
-Deploy the example using [Vercel](https://vercel.com?utm_source=github&utm_medium=readme&utm_campaign=next-example):
-
-[![Deploy with Vercel](https://vercel.com/button)](https://vercel.com/new/git/external?repository-url=https://github.com/vercel/next.js/tree/canary/examples/with-tailwindcss&project-name=with-tailwindcss&repository-name=with-tailwindcss)
-
-## How to use
-
-Execute [`create-next-app`](https://github.com/vercel/next.js/tree/canary/packages/create-next-app) with [npm](https://docs.npmjs.com/cli/init) or [Yarn](https://yarnpkg.com/lang/en/docs/cli/create/) to bootstrap the example:
-
-```bash
-npx create-next-app --example with-tailwindcss with-tailwindcss-app
-# or
-yarn create next-app --example with-tailwindcss with-tailwindcss-app
-```
-
-Deploy it to the cloud with [Vercel](https://vercel.com/new?utm_source=github&utm_medium=readme&utm_campaign=next-example) ([Documentation](https://nextjs.org/docs/deployment)).
+- Once the MVP was made: meaning the dynamicly generated pages of the entire book and a landing page. A calendar was up next. I wanted to learn how to manipulate with date api and learned to use date-fns. I ended up building a calendar from the ground up and each day links to the correct page of the year.
