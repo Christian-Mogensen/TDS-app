@@ -13,11 +13,11 @@ const index = () => {
       animate={{ y: 0 }}
       exit={{ y: "100%" }}
       transition={{ duration: 0.3, ease: "easeInOut" }}
-      className="fixed z-40 w-full h-screen max-w-sm px-4 overflow-auto bg-gray-100 dark:bg-gray-900 md:max-w-full sm:mx-auto "
+      className="fixed z-40 flex w-full h-screen m-auto overflow-auto bg-gray-100 dark:bg-gray-900"
     >
-      <div className="max-w-2xl m-auto mt-20 sm:p-4">
+      <div className="w-full max-w-sm p-2 m-auto overflow-hidden ">
         <Auth />
-        <div className="flex gap-2 px-3 mt-2">
+        <div className="flex gap-2 mt-2">
           <Btn onClick={signInWithGoogle}>
             <GoogleLogoIcon />
             Google

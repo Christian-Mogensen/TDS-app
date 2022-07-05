@@ -11,17 +11,12 @@ const Auth = () => {
     setIndex((prevState) => !prevState);
   };
   return (
-    <div className="">
+    <div className="w-full">
       {!index ? <Signin /> : <Signup />}
-      <div className="px-3">
+      <div className="">
         <FormXtraBtn onClick={toggleIndex}>
           {!index ? "New user? click here " : "Already have an account"}
         </FormXtraBtn>
-        <div className="flex flex-col gap-3">
-          {/* <h3 className="relative my-3 overflow-hidden text-center">or</h3>
-          <Btn onClick={signInWithGoogle} textVal="Sign in with Google" />
-          <Btn onClick={signInWithGithub} textVal="Sign in with Github" /> */}
-        </div>
       </div>
     </div>
   );

@@ -8,7 +8,10 @@ import UseSwitchesCustom from "../Icons/CustomSwitch";
 import IconButton from "../IconRel/IconButton";
 import ProgressBar from "../SpecialComp/ProgressBar";
 import { LockArm, LockIcon } from "../FormV2/LockIcon";
+import { useRouter } from "next/router";
 const Header = () => {
+  const router = useRouter();
+
   const textparent = {
     visible: {
       opacity: 1,
@@ -49,6 +52,16 @@ const Header = () => {
   const [hidden, setHidden] = useState(false);
   const { scrollY } = useViewportScroll();
   const { user, logoutUser } = useUserContext();
+
+  function formRouting() {
+    // setToggledForm(!toggledForm);
+    // router.push("/form");
+
+    // if (router.pathname === "/form") {
+    //   router.back();
+    // }
+    setToggledForm(!toggledForm);
+  }
 
   return (
     <motion.header
@@ -104,10 +117,10 @@ const Header = () => {
                 </div>
                 <motion.div
                   style={{
-                    transform: !toggledForm ? "scaleX(-1)" : "scaleX(1)",
+                    transform: toggledForm ? "scaleX(-1)" : "scaleX(1)",
                   }}
                   className={`absolute transition-all top-0 left-0 w-4 ${
-                    !toggledForm && "left-[-6px]"
+                    toggledForm && "left-[-6px]"
                   }`}
                 >
                   <LockArm />

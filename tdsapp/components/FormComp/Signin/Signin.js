@@ -22,7 +22,7 @@ const Signin = () => {
   };
 
   return (
-    <div className="mx-3 rounded ">
+    <div className="w-full rounded ">
       <h2 className="mb-3 text-3xl text-current capitalize">login</h2>
       <form className="flex flex-col gap-3" onSubmit={onSubmit}>
         <InputCompField type="email" placeholder="email" ref={emailRef} />

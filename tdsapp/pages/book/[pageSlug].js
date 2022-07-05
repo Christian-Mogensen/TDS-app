@@ -59,9 +59,9 @@ export default function page({ currentPage }) {
         />
         <title>{pageTitle}</title>
       </Head>
-      <Header />
-      <AnimatePresence>{toggled && <Calendar />}</AnimatePresence>
-      <AnimatePresence>{toggled && <FormV2 />}</AnimatePresence>
+      {/* <Header /> */}
+      {/* <AnimatePresence>{toggled && <Calendar />}</AnimatePresence>
+      <AnimatePresence>{toggled && <FormV2 />}</AnimatePresence> */}
       <AnimatePresence>
         {!toggled && (
           <Main>
