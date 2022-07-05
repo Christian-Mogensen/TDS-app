@@ -10,7 +10,7 @@ import Quote from "../../components/PageElement/Quote";
 import Synopsis from "../../components/PageElement/Synopsis";
 import { useStateContext } from "../../context/stateContext";
 import db from "../../firebase/firebase";
-
+import FormV2 from "../../components/FormV2";
 export const getStaticProps = async ({ params }) => {
   const currentPage = doc(db, `book/${params?.pageSlug}`);
   const page = await (await getDoc(currentPage)).data();
@@ -59,8 +59,9 @@ export default function page({ currentPage }) {
         />
         <title>{pageTitle}</title>
       </Head>
-      <Header />
-      <AnimatePresence>{toggled && <Calendar />}</AnimatePresence>
+      {/* <Header /> */}
+      {/* <AnimatePresence>{toggled && <Calendar />}</AnimatePresence>
+      <AnimatePresence>{toggled && <FormV2 />}</AnimatePresence> */}
       <AnimatePresence>
         {!toggled && (
           <Main>

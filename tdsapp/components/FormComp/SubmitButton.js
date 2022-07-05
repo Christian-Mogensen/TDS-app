@@ -1,15 +1,18 @@
 import React from "react";
 import { motion } from "framer-motion";
+import { useStateContext } from "../../context/stateContext";
 
 const SubmitButton = (e) => {
-    const handleSubmitClick = () =>{
-  e.preventDefault();
-  if (state.password === state.confirmPassword) {
-    sendDetailsToServer();
-  } else {
-    props.showError("Passwords do not match");
-  }
-}
+  const { toggledForm, setToggledForm } = useStateContext();
+  const handleSubmitClick = () => {
+    e.preventDefault();
+    if (state.password === state.confirmPassword) {
+      sendDetailsToServer();
+    } else {
+      props.showError("Passwords do not match");
+    }
+    setToggledForm(toggledForm);
+  };
   return (
     <motion.button
       initial={{ opacity: 0, x: 40 }}
@@ -17,7 +20,7 @@ const SubmitButton = (e) => {
       transition={{ delay: 0.5 }}
       type="submit"
       onClick={handleSubmitClick}
-      className="bg-green-500 py-3 w-28 rounded text-white shadow-sm"
+      className="py-3 text-white bg-gray-900 rounded shadow-sm w-28 dark:text-gray-700 dark:bg-gray-100"
     >
       Submit
     </motion.button>

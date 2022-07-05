@@ -31,7 +31,7 @@ const SigninComponent = ({ isOpen }) => {
       <ButtonSubmit textVal={"Sign in"} />
       <AtnBtn onClick={forgotPasswordHandler} altText={"Forgot Password"} />
 
-      <p className="text-center">or</p>
+      {/* <p className="text-center">or</p> */}
       <div className="flex gap-3">
         <FormBtn onClick={signInWithGoogle} btnIcon={<GoogleIcon />} />
         <FormBtn onClick={signInWithGithub} btnIcon={<GitHubIcon />} />

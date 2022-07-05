@@ -1,4 +1,11 @@
-const ButtonSubmit = ({textVal, onClick}) => <button onClick={onClick} className="bg-green-500 w-full py-3 rounded self-end text-white shadow-sm" type="submit">{textVal}</button>
-    
+const ButtonSubmit = ({ textVal, onClick }) => (
+  <button
+    onClick={onClick}
+    className="self-end w-full py-3 text-white bg-gray-900 rounded shadow-sm dark:text-gray-700 dark:bg-gray-100"
+    type="submit"
+  >
+    {textVal}
+  </button>
+);
 
-export default ButtonSubmit
+export default ButtonSubmit;
